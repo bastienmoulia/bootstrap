@@ -1,47 +1,55 @@
+@use "functions";
+@use "variables";
+@use "variables-dark";
+
 // Re-assigned maps
 //
 // Placed here so that others can override the default Sass maps and see automatic updates to utilities and more.
 
 // scss-docs-start theme-colors-rgb
-$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value") !default;
+$theme-colors-rgb: functions.map-loop(
+  variables.$theme-colors,
+  to-rgb,
+  "$value"
+) !default;
 // scss-docs-end theme-colors-rgb
 
 // scss-docs-start theme-text-map
 $theme-colors-text: (
-  "primary": $primary-text-emphasis,
-  "secondary": $secondary-text-emphasis,
-  "success": $success-text-emphasis,
-  "info": $info-text-emphasis,
-  "warning": $warning-text-emphasis,
-  "danger": $danger-text-emphasis,
-  "light": $light-text-emphasis,
-  "dark": $dark-text-emphasis,
+  "primary": variables.$primary-text-emphasis,
+  "secondary": variables.$secondary-text-emphasis,
+  "success": variables.$success-text-emphasis,
+  "info": variables.$info-text-emphasis,
+  "warning": variables.$warning-text-emphasis,
+  "danger": variables.$danger-text-emphasis,
+  "light": variables.$light-text-emphasis,
+  "dark": variables.$dark-text-emphasis,
 ) !default;
 // scss-docs-end theme-text-map
 
 // scss-docs-start theme-bg-subtle-map
 $theme-colors-bg-subtle: (
-  "primary": $primary-bg-subtle,
-  "secondary": $secondary-bg-subtle,
-  "success": $success-bg-subtle,
-  "info": $info-bg-subtle,
-  "warning": $warning-bg-subtle,
-  "danger": $danger-bg-subtle,
-  "light": $light-bg-subtle,
-  "dark": $dark-bg-subtle,
+  "primary": variables.$primary-bg-subtle,
+  "secondary": variables.$secondary-bg-subtle,
+  "success": variables.$success-bg-subtle,
+  "info": variables.$info-bg-subtle,
+  "warning": variables.$warning-bg-subtle,
+  "danger": variables.$danger-bg-subtle,
+  "light": variables.$light-bg-subtle,
+  "dark": variables.$dark-bg-subtle,
 ) !default;
 // scss-docs-end theme-bg-subtle-map
 
 // scss-docs-start theme-border-subtle-map
 $theme-colors-border-subtle: (
-  "primary": $primary-border-subtle,
-  "secondary": $secondary-border-subtle,
-  "success": $success-border-subtle,
-  "info": $info-border-subtle,
-  "warning": $warning-border-subtle,
-  "danger": $danger-border-subtle,
-  "light": $light-border-subtle,
-  "dark": $dark-border-subtle,
+  "primary": variables.$primary-border-subtle,
+  "secondary": variables.$secondary-border-subtle,
+  "success": variables.$success-border-subtle,
+  "info": variables.$info-border-subtle,
+  "warning": variables.$warning-border-subtle,
+  "danger": variables.$danger-border-subtle,
+  "light": variables.$light-border-subtle,
+  "dark": variables.$dark-border-subtle,
 ) !default;
 // scss-docs-end theme-border-subtle-map
 
@@ -49,43 +57,43 @@ $theme-colors-text-dark: null !default;
 $theme-colors-bg-subtle-dark: null !default;
 $theme-colors-border-subtle-dark: null !default;
 
-@if $enable-dark-mode {
+@if variables.$enable-dark-mode {
   // scss-docs-start theme-text-dark-map
   $theme-colors-text-dark: (
-    "primary": $primary-text-emphasis-dark,
-    "secondary": $secondary-text-emphasis-dark,
-    "success": $success-text-emphasis-dark,
-    "info": $info-text-emphasis-dark,
-    "warning": $warning-text-emphasis-dark,
-    "danger": $danger-text-emphasis-dark,
-    "light": $light-text-emphasis-dark,
-    "dark": $dark-text-emphasis-dark,
+    "primary": variables-dark.$primary-text-emphasis-dark,
+    "secondary": variables-dark.$secondary-text-emphasis-dark,
+    "success": variables-dark.$success-text-emphasis-dark,
+    "info": variables-dark.$info-text-emphasis-dark,
+    "warning": variables-dark.$warning-text-emphasis-dark,
+    "danger": variables-dark.$danger-text-emphasis-dark,
+    "light": variables-dark.$light-text-emphasis-dark,
+    "dark": variables-dark.$dark-text-emphasis-dark,
   ) !default;
   // scss-docs-end theme-text-dark-map
 
   // scss-docs-start theme-bg-subtle-dark-map
   $theme-colors-bg-subtle-dark: (
-    "primary": $primary-bg-subtle-dark,
-    "secondary": $secondary-bg-subtle-dark,
-    "success": $success-bg-subtle-dark,
-    "info": $info-bg-subtle-dark,
-    "warning": $warning-bg-subtle-dark,
-    "danger": $danger-bg-subtle-dark,
-    "light": $light-bg-subtle-dark,
-    "dark": $dark-bg-subtle-dark,
+    "primary": variables-dark.$primary-bg-subtle-dark,
+    "secondary": variables-dark.$secondary-bg-subtle-dark,
+    "success": variables-dark.$success-bg-subtle-dark,
+    "info": variables-dark.$info-bg-subtle-dark,
+    "warning": variables-dark.$warning-bg-subtle-dark,
+    "danger": variables-dark.$danger-bg-subtle-dark,
+    "light": variables-dark.$light-bg-subtle-dark,
+    "dark": variables-dark.$dark-bg-subtle-dark,
   ) !default;
   // scss-docs-end theme-bg-subtle-dark-map
 
   // scss-docs-start theme-border-subtle-dark-map
   $theme-colors-border-subtle-dark: (
-    "primary": $primary-border-subtle-dark,
-    "secondary": $secondary-border-subtle-dark,
-    "success": $success-border-subtle-dark,
-    "info": $info-border-subtle-dark,
-    "warning": $warning-border-subtle-dark,
-    "danger": $danger-border-subtle-dark,
-    "light": $light-border-subtle-dark,
-    "dark": $dark-border-subtle-dark,
+    "primary": variables-dark.$primary-border-subtle-dark,
+    "secondary": variables-dark.$secondary-border-subtle-dark,
+    "success": variables-dark.$success-border-subtle-dark,
+    "info": variables-dark.$info-border-subtle-dark,
+    "warning": variables-dark.$warning-border-subtle-dark,
+    "danger": variables-dark.$danger-border-subtle-dark,
+    "light": variables-dark.$light-border-subtle-dark,
+    "dark": variables-dark.$dark-border-subtle-dark,
   ) !default;
   // scss-docs-end theme-border-subtle-dark-map
 }
@@ -103,22 +111,28 @@ $utilities-colors: $theme-colors-rgb !default;
 $utilities-text: map-merge(
   $utilities-colors,
   (
-    "black": to-rgb($black),
-    "white": to-rgb($white),
-    "body": to-rgb($body-color)
+    "black": to-rgb(variables.$black),
+    "white": to-rgb(variables.$white),
+    "body": to-rgb(variables.$body-color),
   )
 ) !default;
-$utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text") !default;
+$utilities-text-colors: functions.map-loop(
+  $utilities-text,
+  rgba-css-var,
+  "$key",
+  "text",
+  variables.$prefix
+) !default;
 
 $utilities-text-emphasis-colors: (
-  "primary-emphasis": var(--#{$prefix}primary-text-emphasis),
-  "secondary-emphasis": var(--#{$prefix}secondary-text-emphasis),
-  "success-emphasis": var(--#{$prefix}success-text-emphasis),
-  "info-emphasis": var(--#{$prefix}info-text-emphasis),
-  "warning-emphasis": var(--#{$prefix}warning-text-emphasis),
-  "danger-emphasis": var(--#{$prefix}danger-text-emphasis),
-  "light-emphasis": var(--#{$prefix}light-text-emphasis),
-  "dark-emphasis": var(--#{$prefix}dark-text-emphasis)
+  "primary-emphasis": var(--#{variables.$prefix}primary-text-emphasis),
+  "secondary-emphasis": var(--#{variables.$prefix}secondary-text-emphasis),
+  "success-emphasis": var(--#{variables.$prefix}success-text-emphasis),
+  "info-emphasis": var(--#{variables.$prefix}info-text-emphasis),
+  "warning-emphasis": var(--#{variables.$prefix}warning-text-emphasis),
+  "danger-emphasis": var(--#{variables.$prefix}danger-text-emphasis),
+  "light-emphasis": var(--#{variables.$prefix}light-text-emphasis),
+  "dark-emphasis": var(--#{variables.$prefix}dark-text-emphasis),
 ) !default;
 // scss-docs-end utilities-text-colors
 
@@ -126,22 +140,28 @@ $utilities-text-emphasis-colors: (
 $utilities-bg: map-merge(
   $utilities-colors,
   (
-    "black": to-rgb($black),
-    "white": to-rgb($white),
-    "body": to-rgb($body-bg)
+    "black": to-rgb(variables.$black),
+    "white": to-rgb(variables.$white),
+    "body": to-rgb(variables.$body-bg),
   )
 ) !default;
-$utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg") !default;
+$utilities-bg-colors: functions.map-loop(
+  $utilities-bg,
+  rgba-css-var,
+  "$key",
+  "bg",
+  variables.$prefix
+) !default;
 
 $utilities-bg-subtle: (
-  "primary-subtle": var(--#{$prefix}primary-bg-subtle),
-  "secondary-subtle": var(--#{$prefix}secondary-bg-subtle),
-  "success-subtle": var(--#{$prefix}success-bg-subtle),
-  "info-subtle": var(--#{$prefix}info-bg-subtle),
-  "warning-subtle": var(--#{$prefix}warning-bg-subtle),
-  "danger-subtle": var(--#{$prefix}danger-bg-subtle),
-  "light-subtle": var(--#{$prefix}light-bg-subtle),
-  "dark-subtle": var(--#{$prefix}dark-bg-subtle)
+  "primary-subtle": var(--#{variables.$prefix}primary-bg-subtle),
+  "secondary-subtle": var(--#{variables.$prefix}secondary-bg-subtle),
+  "success-subtle": var(--#{variables.$prefix}success-bg-subtle),
+  "info-subtle": var(--#{variables.$prefix}info-bg-subtle),
+  "warning-subtle": var(--#{variables.$prefix}warning-bg-subtle),
+  "danger-subtle": var(--#{variables.$prefix}danger-bg-subtle),
+  "light-subtle": var(--#{variables.$prefix}light-bg-subtle),
+  "dark-subtle": var(--#{variables.$prefix}dark-bg-subtle),
 ) !default;
 // scss-docs-end utilities-bg-colors
 
@@ -149,26 +169,42 @@ $utilities-bg-subtle: (
 $utilities-border: map-merge(
   $utilities-colors,
   (
-    "black": to-rgb($black),
-    "white": to-rgb($white)
+    "black": to-rgb(variables.$black),
+    "white": to-rgb(variables.$white),
   )
 ) !default;
-$utilities-border-colors: map-loop($utilities-border, rgba-css-var, "$key", "border") !default;
+$utilities-border-colors: functions.map-loop(
+  $utilities-border,
+  rgba-css-var,
+  "$key",
+  "border",
+  variables.$prefix
+) !default;
 
 $utilities-border-subtle: (
-  "primary-subtle": var(--#{$prefix}primary-border-subtle),
-  "secondary-subtle": var(--#{$prefix}secondary-border-subtle),
-  "success-subtle": var(--#{$prefix}success-border-subtle),
-  "info-subtle": var(--#{$prefix}info-border-subtle),
-  "warning-subtle": var(--#{$prefix}warning-border-subtle),
-  "danger-subtle": var(--#{$prefix}danger-border-subtle),
-  "light-subtle": var(--#{$prefix}light-border-subtle),
-  "dark-subtle": var(--#{$prefix}dark-border-subtle)
+  "primary-subtle": var(--#{variables.$prefix}primary-border-subtle),
+  "secondary-subtle": var(--#{variables.$prefix}secondary-border-subtle),
+  "success-subtle": var(--#{variables.$prefix}success-border-subtle),
+  "info-subtle": var(--#{variables.$prefix}info-border-subtle),
+  "warning-subtle": var(--#{variables.$prefix}warning-border-subtle),
+  "danger-subtle": var(--#{variables.$prefix}danger-border-subtle),
+  "light-subtle": var(--#{variables.$prefix}light-border-subtle),
+  "dark-subtle": var(--#{variables.$prefix}dark-border-subtle),
 ) !default;
 // scss-docs-end utilities-border-colors
 
-$utilities-links-underline: map-loop($utilities-colors, rgba-css-var, "$key", "link-underline") !default;
+$utilities-links-underline: functions.map-loop(
+  $utilities-colors,
+  rgba-css-var,
+  "$key",
+  "link-underline",
+  variables.$prefix
+) !default;
 
-$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
+$negative-spacers: if(
+  variables.$enable-negative-margins,
+  negativify-map(variables.$spacers),
+  null
+) !default;
 
-$gutters: $spacers !default;
+$gutters: variables.$spacers !default;

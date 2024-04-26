@@ -5,24 +5,25 @@
 
 .badge {
   // scss-docs-start badge-css-vars
-  --#{$prefix}badge-padding-x: #{$badge-padding-x};
-  --#{$prefix}badge-padding-y: #{$badge-padding-y};
-  @include rfs($badge-font-size, --#{$prefix}badge-font-size);
-  --#{$prefix}badge-font-weight: #{$badge-font-weight};
-  --#{$prefix}badge-color: #{$badge-color};
-  --#{$prefix}badge-border-radius: #{$badge-border-radius};
+  --#{variables.$prefix}badge-padding-x: #{$badge-padding-x};
+  --#{variables.$prefix}badge-padding-y: #{$badge-padding-y};
+  @include rfs($badge-font-size, --#{variables.$prefix}badge-font-size);
+  --#{variables.$prefix}badge-font-weight: #{$badge-font-weight};
+  --#{variables.$prefix}badge-color: #{$badge-color};
+  --#{variables.$prefix}badge-border-radius: #{$badge-border-radius};
   // scss-docs-end badge-css-vars
 
   display: inline-block;
-  padding: var(--#{$prefix}badge-padding-y) var(--#{$prefix}badge-padding-x);
-  @include font-size(var(--#{$prefix}badge-font-size));
-  font-weight: var(--#{$prefix}badge-font-weight);
+  padding: var(--#{variables.$prefix}badge-padding-y)
+    var(--#{variables.$prefix}badge-padding-x);
+  @include font-size(var(--#{variables.$prefix}badge-font-size));
+  font-weight: var(--#{variables.$prefix}badge-font-weight);
   line-height: 1;
-  color: var(--#{$prefix}badge-color);
+  color: var(--#{variables.$prefix}badge-color);
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  @include border-radius(var(--#{$prefix}badge-border-radius));
+  @include border-radius(var(--#{variables.$prefix}badge-border-radius));
   @include gradient-bg();
 
   // Empty badges collapse automatically

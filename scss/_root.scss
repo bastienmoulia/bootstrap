@@ -1,3 +1,9 @@
+@use "variables";
+@use "variables-dark";
+@use "maps";
+@use "mixins/color-mode";
+@use "vendor/rfs";
+
 :root,
 [data-bs-theme="light"] {
   // Note: Custom variable values only support SassScript inside `#{}`.
@@ -6,182 +12,219 @@
   //
   // Generate palettes for full colors, grays, and theme colors.
 
-  @each $color, $value in $colors {
-    --#{$prefix}#{$color}: #{$value};
+  @each $color, $value in variables.$colors {
+    --#{ variables.$prefix}#{$color}: #{$value};
   }
 
-  @each $color, $value in $grays {
-    --#{$prefix}gray-#{$color}: #{$value};
+  @each $color, $value in variables.$grays {
+    --#{ variables.$prefix}gray-#{$color}: #{$value};
   }
 
-  @each $color, $value in $theme-colors {
-    --#{$prefix}#{$color}: #{$value};
+  @each $color, $value in variables.$theme-colors {
+    --#{ variables.$prefix}#{$color}: #{$value};
   }
 
-  @each $color, $value in $theme-colors-rgb {
-    --#{$prefix}#{$color}-rgb: #{$value};
+  @each $color, $value in maps.$theme-colors-rgb {
+    --#{ variables.$prefix}#{$color}-rgb: #{$value};
   }
 
-  @each $color, $value in $theme-colors-text {
-    --#{$prefix}#{$color}-text-emphasis: #{$value};
+  @each $color, $value in maps.$theme-colors-text {
+    --#{ variables.$prefix}#{$color}-text-emphasis: #{$value};
   }
 
-  @each $color, $value in $theme-colors-bg-subtle {
-    --#{$prefix}#{$color}-bg-subtle: #{$value};
+  @each $color, $value in maps.$theme-colors-bg-subtle {
+    --#{ variables.$prefix}#{$color}-bg-subtle: #{$value};
   }
 
-  @each $color, $value in $theme-colors-border-subtle {
-    --#{$prefix}#{$color}-border-subtle: #{$value};
+  @each $color, $value in maps.$theme-colors-border-subtle {
+    --#{ variables.$prefix}#{$color}-border-subtle: #{$value};
   }
 
-  --#{$prefix}white-rgb: #{to-rgb($white)};
-  --#{$prefix}black-rgb: #{to-rgb($black)};
+  --#{ variables.$prefix}white-rgb: #{to-rgb(variables.$white)};
+  --#{ variables.$prefix}black-rgb: #{to-rgb(variables.$black)};
 
   // Fonts
 
   // Note: Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-  --#{$prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
-  --#{$prefix}font-monospace: #{inspect($font-family-monospace)};
-  --#{$prefix}gradient: #{$gradient};
+  --#{ variables.$prefix}font-sans-serif: #{inspect(
+      variables.$font-family-sans-serif
+    )};
+  --#{ variables.$prefix}font-monospace: #{inspect(
+      variables.$font-family-monospace
+    )};
+  --#{ variables.$prefix}gradient: #{variables.$gradient};
 
   // Root and body
   // scss-docs-start root-body-variables
-  @if $font-size-root != null {
-    --#{$prefix}root-font-size: #{$font-size-root};
+  @if variables.$font-size-root != null {
+    --#{ variables.$prefix}root-font-size: #{variables.$font-size-root};
   }
-  --#{$prefix}body-font-family: #{inspect($font-family-base)};
-  @include rfs($font-size-base, --#{$prefix}body-font-size);
-  --#{$prefix}body-font-weight: #{$font-weight-base};
-  --#{$prefix}body-line-height: #{$line-height-base};
-  @if $body-text-align != null {
-    --#{$prefix}body-text-align: #{$body-text-align};
+  --#{ variables.$prefix}body-font-family: #{inspect(
+      variables.$font-family-base
+    )};
+  @include rfs.rfs(
+    variables.$font-size-base,
+    --#{variables.$prefix}body-font-size
+  );
+  --#{ variables.$prefix}body-font-weight: #{variables.$font-weight-base};
+  --#{ variables.$prefix}body-line-height: #{variables.$line-height-base};
+  @if variables.$body-text-align != null {
+    --#{ variables.$prefix}body-text-align: #{variables.$body-text-align};
   }
 
-  --#{$prefix}body-color: #{$body-color};
-  --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
-  --#{$prefix}body-bg: #{$body-bg};
-  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+  --#{ variables.$prefix}body-color: #{variables.$body-color};
+  --#{ variables.$prefix}body-color-rgb: #{to-rgb(variables.$body-color)};
+  --#{ variables.$prefix}body-bg: #{variables.$body-bg};
+  --#{ variables.$prefix}body-bg-rgb: #{to-rgb(variables.$body-bg)};
 
-  --#{$prefix}emphasis-color: #{$body-emphasis-color};
-  --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
+  --#{ variables.$prefix}emphasis-color: #{variables.$body-emphasis-color};
+  --#{ variables.$prefix}emphasis-color-rgb: #{to-rgb(
+      variables.$body-emphasis-color
+    )};
 
-  --#{$prefix}secondary-color: #{$body-secondary-color};
-  --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color)};
-  --#{$prefix}secondary-bg: #{$body-secondary-bg};
-  --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg)};
+  --#{ variables.$prefix}secondary-color: #{variables.$body-secondary-color};
+  --#{ variables.$prefix}secondary-color-rgb: #{to-rgb(
+      variables.$body-secondary-color
+    )};
+  --#{ variables.$prefix}secondary-bg: #{variables.$body-secondary-bg};
+  --#{ variables.$prefix}secondary-bg-rgb: #{to-rgb(
+      variables.$body-secondary-bg
+    )};
 
-  --#{$prefix}tertiary-color: #{$body-tertiary-color};
-  --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color)};
-  --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
-  --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
+  --#{ variables.$prefix}tertiary-color: #{variables.$body-tertiary-color};
+  --#{ variables.$prefix}tertiary-color-rgb: #{to-rgb(
+      variables.$body-tertiary-color
+    )};
+  --#{ variables.$prefix}tertiary-bg: #{variables.$body-tertiary-bg};
+  --#{ variables.$prefix}tertiary-bg-rgb: #{to-rgb(variables.$body-tertiary-bg)};
   // scss-docs-end root-body-variables
 
-  --#{$prefix}heading-color: #{$headings-color};
+  --#{ variables.$prefix}heading-color: #{variables.$headings-color};
 
-  --#{$prefix}link-color: #{$link-color};
-  --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
-  --#{$prefix}link-decoration: #{$link-decoration};
+  --#{ variables.$prefix}link-color: #{variables.$link-color};
+  --#{ variables.$prefix}link-color-rgb: #{to-rgb(variables.$link-color)};
+  --#{ variables.$prefix}link-decoration: #{variables.$link-decoration};
 
-  --#{$prefix}link-hover-color: #{$link-hover-color};
-  --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
+  --#{ variables.$prefix}link-hover-color: #{variables.$link-hover-color};
+  --#{ variables.$prefix}link-hover-color-rgb: #{to-rgb(
+      variables.$link-hover-color
+    )};
 
-  @if $link-hover-decoration != null {
-    --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
+  @if variables.$link-hover-decoration != null {
+    --#{ variables.$prefix}link-hover-decoration: #{variables.$link-hover-decoration};
   }
 
-  --#{$prefix}code-color: #{$code-color};
-  --#{$prefix}highlight-color: #{$mark-color};
-  --#{$prefix}highlight-bg: #{$mark-bg};
+  --#{ variables.$prefix}code-color: #{variables.$code-color};
+  --#{ variables.$prefix}highlight-color: #{variables.$mark-color};
+  --#{ variables.$prefix}highlight-bg: #{variables.$mark-bg};
 
   // scss-docs-start root-border-var
-  --#{$prefix}border-width: #{$border-width};
-  --#{$prefix}border-style: #{$border-style};
-  --#{$prefix}border-color: #{$border-color};
-  --#{$prefix}border-color-translucent: #{$border-color-translucent};
+  --#{ variables.$prefix}border-width: #{variables.$border-width};
+  --#{ variables.$prefix}border-style: #{variables.$border-style};
+  --#{ variables.$prefix}border-color: #{variables.$border-color};
+  --#{ variables.$prefix}border-color-translucent: #{variables.$border-color-translucent};
 
-  --#{$prefix}border-radius: #{$border-radius};
-  --#{$prefix}border-radius-sm: #{$border-radius-sm};
-  --#{$prefix}border-radius-lg: #{$border-radius-lg};
-  --#{$prefix}border-radius-xl: #{$border-radius-xl};
-  --#{$prefix}border-radius-xxl: #{$border-radius-xxl};
-  --#{$prefix}border-radius-2xl: var(--#{$prefix}border-radius-xxl); // Deprecated in v5.3.0 for consistency
-  --#{$prefix}border-radius-pill: #{$border-radius-pill};
+  --#{ variables.$prefix}border-radius: #{variables.$border-radius};
+  --#{ variables.$prefix}border-radius-sm: #{variables.$border-radius-sm};
+  --#{ variables.$prefix}border-radius-lg: #{variables.$border-radius-lg};
+  --#{ variables.$prefix}border-radius-xl: #{variables.$border-radius-xl};
+  --#{ variables.$prefix}border-radius-xxl: #{variables.$border-radius-xxl};
+  --#{ variables.$prefix}border-radius-2xl: var(
+    --#{variables.$prefix}border-radius-xxl
+  ); // Deprecated in v5.3.0 for consistency
+  --#{ variables.$prefix}border-radius-pill: #{variables.$border-radius-pill};
   // scss-docs-end root-border-var
 
-  --#{$prefix}box-shadow: #{$box-shadow};
-  --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
-  --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
-  --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
+  --#{ variables.$prefix}box-shadow: #{variables.$box-shadow};
+  --#{ variables.$prefix}box-shadow-sm: #{variables.$box-shadow-sm};
+  --#{ variables.$prefix}box-shadow-lg: #{variables.$box-shadow-lg};
+  --#{ variables.$prefix}box-shadow-inset: #{variables.$box-shadow-inset};
 
   // Focus styles
   // scss-docs-start root-focus-variables
-  --#{$prefix}focus-ring-width: #{$focus-ring-width};
-  --#{$prefix}focus-ring-opacity: #{$focus-ring-opacity};
-  --#{$prefix}focus-ring-color: #{$focus-ring-color};
+  --#{ variables.$prefix}focus-ring-width: #{variables.$focus-ring-width};
+  --#{ variables.$prefix}focus-ring-opacity: #{variables.$focus-ring-opacity};
+  --#{ variables.$prefix}focus-ring-color: #{variables.$focus-ring-color};
   // scss-docs-end root-focus-variables
 
   // scss-docs-start root-form-validation-variables
-  --#{$prefix}form-valid-color: #{$form-valid-color};
-  --#{$prefix}form-valid-border-color: #{$form-valid-border-color};
-  --#{$prefix}form-invalid-color: #{$form-invalid-color};
-  --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
+  --#{ variables.$prefix}form-valid-color: #{variables.$form-valid-color};
+  --#{ variables.$prefix}form-valid-border-color: #{variables.$form-valid-border-color};
+  --#{ variables.$prefix}form-invalid-color: #{variables.$form-invalid-color};
+  --#{ variables.$prefix}form-invalid-border-color: #{variables.$form-invalid-border-color};
   // scss-docs-end root-form-validation-variables
 }
 
-@if $enable-dark-mode {
-  @include color-mode(dark, true) {
+@if variables.$enable-dark-mode {
+  @include color-mode.color-mode(dark, true) {
     color-scheme: dark;
 
     // scss-docs-start root-dark-mode-vars
-    --#{$prefix}body-color: #{$body-color-dark};
-    --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
-    --#{$prefix}body-bg: #{$body-bg-dark};
-    --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
+    --#{ variables.$prefix}body-color: #{variables-dark.$body-color-dark};
+    --#{ variables.$prefix}body-color-rgb: #{to-rgb(
+        variables-dark.$body-color-dark
+      )};
+    --#{ variables.$prefix}body-bg: #{variables-dark.$body-bg-dark};
+    --#{ variables.$prefix}body-bg-rgb: #{to-rgb(variables-dark.$body-bg-dark)};
 
-    --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
-    --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
+    --#{ variables.$prefix}emphasis-color: #{variables-dark.$body-emphasis-color-dark};
+    --#{ variables.$prefix}emphasis-color-rgb: #{to-rgb(
+        variables-dark.$body-emphasis-color-dark
+      )};
 
-    --#{$prefix}secondary-color: #{$body-secondary-color-dark};
-    --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
-    --#{$prefix}secondary-bg: #{$body-secondary-bg-dark};
-    --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-dark)};
+    --#{ variables.$prefix}secondary-color: #{variables-dark.$body-secondary-color-dark};
+    --#{ variables.$prefix}secondary-color-rgb: #{to-rgb(
+        variables-dark.$body-secondary-color-dark
+      )};
+    --#{ variables.$prefix}secondary-bg: #{variables-dark.$body-secondary-bg-dark};
+    --#{ variables.$prefix}secondary-bg-rgb: #{to-rgb(
+        variables-dark.$body-secondary-bg-dark
+      )};
 
-    --#{$prefix}tertiary-color: #{$body-tertiary-color-dark};
-    --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
-    --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
-    --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
+    --#{ variables.$prefix}tertiary-color: #{variables-dark.$body-tertiary-color-dark};
+    --#{ variables.$prefix}tertiary-color-rgb: #{to-rgb(
+        variables-dark.$body-tertiary-color-dark
+      )};
+    --#{ variables.$prefix}tertiary-bg: #{variables-dark.$body-tertiary-bg-dark};
+    --#{ variables.$prefix}tertiary-bg-rgb: #{to-rgb(
+        variables-dark.$body-tertiary-bg-dark
+      )};
 
-    @each $color, $value in $theme-colors-text-dark {
-      --#{$prefix}#{$color}-text-emphasis: #{$value};
+    @each $color, $value in maps.$theme-colors-text-dark {
+      --#{ variables.$prefix}#{$color}-text-emphasis: #{$value};
     }
 
-    @each $color, $value in $theme-colors-bg-subtle-dark {
-      --#{$prefix}#{$color}-bg-subtle: #{$value};
+    @each $color, $value in maps.$theme-colors-bg-subtle-dark {
+      --#{ variables.$prefix}#{$color}-bg-subtle: #{$value};
     }
 
-    @each $color, $value in $theme-colors-border-subtle-dark {
-      --#{$prefix}#{$color}-border-subtle: #{$value};
+    @each $color, $value in maps.$theme-colors-border-subtle-dark {
+      --#{ variables.$prefix}#{$color}-border-subtle: #{$value};
     }
 
-    --#{$prefix}heading-color: #{$headings-color-dark};
+    --#{ variables.$prefix}heading-color: #{variables-dark.$headings-color-dark};
 
-    --#{$prefix}link-color: #{$link-color-dark};
-    --#{$prefix}link-hover-color: #{$link-hover-color-dark};
-    --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
-    --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
+    --#{ variables.$prefix}link-color: #{variables-dark.$link-color-dark};
+    --#{ variables.$prefix}link-hover-color: #{variables-dark.$link-hover-color-dark};
+    --#{ variables.$prefix}link-color-rgb: #{to-rgb(
+        variables-dark.$link-color-dark
+      )};
+    --#{ variables.$prefix}link-hover-color-rgb: #{to-rgb(
+        variables-dark.$link-hover-color-dark
+      )};
 
-    --#{$prefix}code-color: #{$code-color-dark};
-    --#{$prefix}highlight-color: #{$mark-color-dark};
-    --#{$prefix}highlight-bg: #{$mark-bg-dark};
+    --#{ variables.$prefix}code-color: #{variables-dark.$code-color-dark};
+    --#{ variables.$prefix}highlight-color: #{variables-dark.$mark-color-dark};
+    --#{ variables.$prefix}highlight-bg: #{variables-dark.$mark-bg-dark};
 
-    --#{$prefix}border-color: #{$border-color-dark};
-    --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
+    --#{ variables.$prefix}border-color: #{variables-dark.$border-color-dark};
+    --#{ variables.$prefix}border-color-translucent: #{variables-dark.$border-color-translucent-dark};
 
-    --#{$prefix}form-valid-color: #{$form-valid-color-dark};
-    --#{$prefix}form-valid-border-color: #{$form-valid-border-color-dark};
-    --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};
-    --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
+    --#{ variables.$prefix}form-valid-color: #{variables-dark.$form-valid-color-dark};
+    --#{ variables.$prefix}form-valid-border-color: #{variables-dark.$form-valid-border-color-dark};
+    --#{ variables.$prefix}form-invalid-color: #{variables-dark.$form-invalid-color-dark};
+    --#{ variables.$prefix}form-invalid-border-color: #{variables-dark.$form-invalid-border-color-dark};
     // scss-docs-end root-dark-mode-vars
   }
 }

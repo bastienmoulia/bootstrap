@@ -1,5 +1,7 @@
+@use "../variables";
+
 @mixin box-shadow($shadow...) {
-  @if $enable-shadows {
+  @if variables.$enable-shadows {
     $result: ();
 
     @each $value in $shadow {
