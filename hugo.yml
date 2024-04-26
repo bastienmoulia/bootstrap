@@ -100,3 +100,6 @@ params:
   anchors:
     min: 2
     max: 5
+
+  sass:
+    transpiler: "dartsass"

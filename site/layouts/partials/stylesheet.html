@@ -19,8 +19,8 @@
   {{- $sassOptions = merge $sassOptions (dict "outputStyle" "compressed") -}}
 {{- end -}}
 
-{{- $docsCss := resources.Get "scss/docs.scss" | toCSS (merge (dict "targetPath" $targetDocsCssPath) $sassOptions) | postCSS $postcssOptions -}}
-{{- $searchCss := resources.Get "scss/search.scss" | toCSS (merge (dict "targetPath" $targetSearchCssPath) $sassOptions) | postCSS $postcssOptions -}}
+{{- $docsCss := resources.Get "scss/docs.scss" | toCSS (merge (dict "transpiler" "dartsass" "targetPath" $targetDocsCssPath) $sassOptions) | postCSS $postcssOptions -}}
+{{- $searchCss := resources.Get "scss/search.scss" | toCSS (merge (dict "transpiler" "dartsass" "targetPath" $targetSearchCssPath) $sassOptions) | postCSS $postcssOptions -}}
 
 <link href="{{ $docsCss.RelPermalink }}" rel="stylesheet">
 <link href="{{ $searchCss.RelPermalink }}" rel="stylesheet">
