@@ -1,3 +1,10 @@
+@use "variables";
+@use "mixins/backdrop";
+@use "mixins/border-radius";
+@use "mixins/box-shadow";
+@use "mixins/breakpoints";
+@use "mixins/transition";
+
 // stylelint-disable function-disallowed-list
 
 // .modal-open      - body class for killing the scroll
@@ -8,27 +15,27 @@
 // Container that the modal scrolls within
 .modal {
   // scss-docs-start modal-css-vars
-  --#{variables.$prefix}modal-zindex: #{$zindex-modal};
-  --#{variables.$prefix}modal-width: #{$modal-md};
-  --#{variables.$prefix}modal-padding: #{$modal-inner-padding};
-  --#{variables.$prefix}modal-margin: #{$modal-dialog-margin};
-  --#{variables.$prefix}modal-color: #{$modal-content-color};
-  --#{variables.$prefix}modal-bg: #{$modal-content-bg};
-  --#{variables.$prefix}modal-border-color: #{$modal-content-border-color};
-  --#{variables.$prefix}modal-border-width: #{$modal-content-border-width};
-  --#{variables.$prefix}modal-border-radius: #{$modal-content-border-radius};
-  --#{variables.$prefix}modal-box-shadow: #{$modal-content-box-shadow-xs};
-  --#{variables.$prefix}modal-inner-border-radius: #{$modal-content-inner-border-radius};
-  --#{variables.$prefix}modal-header-padding-x: #{$modal-header-padding-x};
-  --#{variables.$prefix}modal-header-padding-y: #{$modal-header-padding-y};
-  --#{variables.$prefix}modal-header-padding: #{$modal-header-padding}; // Todo in v6: Split this padding into x and y
-  --#{variables.$prefix}modal-header-border-color: #{$modal-header-border-color};
-  --#{variables.$prefix}modal-header-border-width: #{$modal-header-border-width};
-  --#{variables.$prefix}modal-title-line-height: #{$modal-title-line-height};
-  --#{variables.$prefix}modal-footer-gap: #{$modal-footer-margin-between};
-  --#{variables.$prefix}modal-footer-bg: #{$modal-footer-bg};
-  --#{variables.$prefix}modal-footer-border-color: #{$modal-footer-border-color};
-  --#{variables.$prefix}modal-footer-border-width: #{$modal-footer-border-width};
+  --#{variables.$prefix}modal-zindex: #{variables.$zindex-modal};
+  --#{variables.$prefix}modal-width: #{variables.$modal-md};
+  --#{variables.$prefix}modal-padding: #{variables.$modal-inner-padding};
+  --#{variables.$prefix}modal-margin: #{variables.$modal-dialog-margin};
+  --#{variables.$prefix}modal-color: #{variables.$modal-content-color};
+  --#{variables.$prefix}modal-bg: #{variables.$modal-content-bg};
+  --#{variables.$prefix}modal-border-color: #{variables.$modal-content-border-color};
+  --#{variables.$prefix}modal-border-width: #{variables.$modal-content-border-width};
+  --#{variables.$prefix}modal-border-radius: #{variables.$modal-content-border-radius};
+  --#{variables.$prefix}modal-box-shadow: #{variables.$modal-content-box-shadow-xs};
+  --#{variables.$prefix}modal-inner-border-radius: #{variables.$modal-content-inner-border-radius};
+  --#{variables.$prefix}modal-header-padding-x: #{variables.$modal-header-padding-x};
+  --#{variables.$prefix}modal-header-padding-y: #{variables.$modal-header-padding-y};
+  --#{variables.$prefix}modal-header-padding: #{variables.$modal-header-padding}; // Todo in v6: Split this padding into x and y
+  --#{variables.$prefix}modal-header-border-color: #{variables.$modal-header-border-color};
+  --#{variables.$prefix}modal-header-border-width: #{variables.$modal-header-border-width};
+  --#{variables.$prefix}modal-title-line-height: #{variables.$modal-title-line-height};
+  --#{variables.$prefix}modal-footer-gap: #{variables.$modal-footer-margin-between};
+  --#{variables.$prefix}modal-footer-bg: #{variables.$modal-footer-bg};
+  --#{variables.$prefix}modal-footer-border-color: #{variables.$modal-footer-border-color};
+  --#{variables.$prefix}modal-footer-border-width: #{variables.$modal-footer-border-width};
   // scss-docs-end modal-css-vars
 
   position: fixed;
@@ -58,16 +65,16 @@
 
   // When fading in the modal, animate it to slide down
   .modal.fade & {
-    @include transition($modal-transition);
-    transform: $modal-fade-transform;
+    @include transition.transition(variables.$modal-transition);
+    transform: variables.$modal-fade-transform;
   }
   .modal.show & {
-    transform: $modal-show-transform;
+    transform: variables.$modal-show-transform;
   }
 
   // When trying to close, animate focus to scale
   .modal.modal-static & {
-    transform: $modal-scale-transform;
+    transform: variables.$modal-scale-transform;
   }
 }
 
@@ -103,8 +110,10 @@
   background-clip: padding-box;
   border: var(--#{variables.$prefix}modal-border-width) solid
     var(--#{variables.$prefix}modal-border-color);
-  @include border-radius(var(--#{variables.$prefix}modal-border-radius));
-  @include box-shadow(var(--#{variables.$prefix}modal-box-shadow));
+  @include border-radius.border-radius(
+    var(--#{variables.$prefix}modal-border-radius)
+  );
+  @include box-shadow.box-shadow(var(--#{variables.$prefix}modal-box-shadow));
   // Remove focus outline from opened modal
   outline: 0;
 }
@@ -112,12 +121,12 @@
 // Modal background
 .modal-backdrop {
   // scss-docs-start modal-backdrop-css-vars
-  --#{variables.$prefix}backdrop-zindex: #{$zindex-modal-backdrop};
-  --#{variables.$prefix}backdrop-bg: #{$modal-backdrop-bg};
-  --#{variables.$prefix}backdrop-opacity: #{$modal-backdrop-opacity};
+  --#{variables.$prefix}backdrop-zindex: #{variables.$zindex-modal-backdrop};
+  --#{variables.$prefix}backdrop-bg: #{variables.$modal-backdrop-bg};
+  --#{variables.$prefix}backdrop-opacity: #{variables.$modal-backdrop-opacity};
   // scss-docs-end modal-backdrop-css-vars
 
-  @include overlay-backdrop(
+  @include backdrop.overlay-backdrop(
     var(--#{variables.$prefix}backdrop-zindex),
     var(--#{variables.$prefix}backdrop-bg),
     var(--#{variables.$prefix}backdrop-opacity)
@@ -133,7 +142,7 @@
   padding: var(--#{variables.$prefix}modal-header-padding);
   border-bottom: var(--#{variables.$prefix}modal-header-border-width) solid
     var(--#{variables.$prefix}modal-header-border-color);
-  @include border-top-radius(
+  @include border-radius.border-top-radius(
     var(--#{variables.$prefix}modal-inner-border-radius)
   );
 
@@ -176,7 +185,7 @@
   background-color: var(--#{variables.$prefix}modal-footer-bg);
   border-top: var(--#{variables.$prefix}modal-footer-border-width) solid
     var(--#{variables.$prefix}modal-footer-border-color);
-  @include border-bottom-radius(
+  @include border-radius.border-bottom-radius(
     var(--#{variables.$prefix}modal-inner-border-radius)
   );
 
@@ -191,10 +200,10 @@
 }
 
 // Scale up the modal
-@include media-breakpoint-up(sm) {
+@include breakpoints.media-breakpoint-up(sm) {
   .modal {
-    --#{variables.$prefix}modal-margin: #{$modal-dialog-margin-y-sm-up};
-    --#{variables.$prefix}modal-box-shadow: #{$modal-content-box-shadow-sm-up};
+    --#{variables.$prefix}modal-margin: #{variables.$modal-dialog-margin-y-sm-up};
+    --#{variables.$prefix}modal-box-shadow: #{variables.$modal-content-box-shadow-sm-up};
   }
 
   // Automatically set modal's width for larger viewports
@@ -205,29 +214,32 @@
   }
 
   .modal-sm {
-    --#{variables.$prefix}modal-width: #{$modal-sm};
+    --#{variables.$prefix}modal-width: #{variables.$modal-sm};
   }
 }
 
-@include media-breakpoint-up(lg) {
+@include breakpoints.media-breakpoint-up(lg) {
   .modal-lg,
   .modal-xl {
-    --#{variables.$prefix}modal-width: #{$modal-lg};
+    --#{variables.$prefix}modal-width: #{variables.$modal-lg};
   }
 }
 
-@include media-breakpoint-up(xl) {
+@include breakpoints.media-breakpoint-up(xl) {
   .modal-xl {
-    --#{variables.$prefix}modal-width: #{$modal-xl};
+    --#{variables.$prefix}modal-width: #{variables.$modal-xl};
   }
 }
 
 // scss-docs-start modal-fullscreen-loop
-@each $breakpoint in map-keys($grid-breakpoints) {
-  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@each $breakpoint in map-keys(variables.$grid-breakpoints) {
+  $infix: breakpoints.breakpoint-infix(
+    $breakpoint,
+    variables.$grid-breakpoints
+  );
   $postfix: if($infix != "", $infix + "-down", "");
 
-  @include media-breakpoint-down($breakpoint) {
+  @include breakpoints.media-breakpoint-down($breakpoint) {
     .modal-fullscreen#{$postfix} {
       width: 100vw;
       max-width: none;
@@ -237,12 +249,12 @@
       .modal-content {
         height: 100%;
         border: 0;
-        @include border-radius(0);
+        @include border-radius.border-radius(0);
       }
 
       .modal-header,
       .modal-footer {
-        @include border-radius(0);
+        @include border-radius.border-radius(0);
       }
 
       .modal-body {

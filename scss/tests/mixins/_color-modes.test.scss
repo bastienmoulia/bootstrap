@@ -10,22 +10,22 @@
   @include it("generates data attribute selectors for dark mode") {
     @include assert() {
       @include output() {
-        @include color-mode(dark) {
+        @include color-mode.color-mode(dark) {
           .element {
             color: var(--bs-primary-text-emphasis);
             background-color: var(--bs-primary-bg-subtle);
           }
         }
-        @include color-mode(dark, true) {
+        @include color-mode.color-mode(dark, true) {
           --custom-color: #{mix($indigo, $blue, 50%)};
         }
       }
       @include expect() {
-        [data-bs-theme=dark] .element {
+        [data-bs-theme="dark"] .element {
           color: var(--bs-primary-text-emphasis);
           background-color: var(--bs-primary-bg-subtle);
         }
-        [data-bs-theme=dark] {
+        [data-bs-theme="dark"] {
           --custom-color: #3a3ff8;
         }
       }
@@ -39,13 +39,13 @@
 
     @include assert() {
       @include output() {
-        @include color-mode(dark) {
+        @include color-mode.color-mode(dark) {
           .element {
             color: var(--bs-primary-text-emphasis);
             background-color: var(--bs-primary-bg-subtle);
           }
         }
-        @include color-mode(dark, true) {
+        @include color-mode.color-mode(dark, true) {
           --custom-color: #{mix($indigo, $blue, 50%)};
         }
       }

@@ -1,38 +1,44 @@
+@use "variables";
+@use "mixins/backdrop";
+@use "mixins/box-shadow";
+@use "mixins/breakpoints";
+@use "mixins/transition";
+
 // stylelint-disable function-disallowed-list
 
 %offcanvas-css-vars {
   // scss-docs-start offcanvas-css-vars
-  --#{variables.$prefix}offcanvas-zindex: #{$zindex-offcanvas};
-  --#{variables.$prefix}offcanvas-width: #{$offcanvas-horizontal-width};
-  --#{variables.$prefix}offcanvas-height: #{$offcanvas-vertical-height};
-  --#{variables.$prefix}offcanvas-padding-x: #{$offcanvas-padding-x};
-  --#{variables.$prefix}offcanvas-padding-y: #{$offcanvas-padding-y};
-  --#{variables.$prefix}offcanvas-color: #{$offcanvas-color};
-  --#{variables.$prefix}offcanvas-bg: #{$offcanvas-bg-color};
-  --#{variables.$prefix}offcanvas-border-width: #{$offcanvas-border-width};
-  --#{variables.$prefix}offcanvas-border-color: #{$offcanvas-border-color};
-  --#{variables.$prefix}offcanvas-box-shadow: #{$offcanvas-box-shadow};
+  --#{variables.$prefix}offcanvas-zindex: #{variables.$zindex-offcanvas};
+  --#{variables.$prefix}offcanvas-width: #{variables.$offcanvas-horizontal-width};
+  --#{variables.$prefix}offcanvas-height: #{variables.$offcanvas-vertical-height};
+  --#{variables.$prefix}offcanvas-padding-x: #{variables.$offcanvas-padding-x};
+  --#{variables.$prefix}offcanvas-padding-y: #{variables.$offcanvas-padding-y};
+  --#{variables.$prefix}offcanvas-color: #{variables.$offcanvas-color};
+  --#{variables.$prefix}offcanvas-bg: #{variables.$offcanvas-bg-color};
+  --#{variables.$prefix}offcanvas-border-width: #{variables.$offcanvas-border-width};
+  --#{variables.$prefix}offcanvas-border-color: #{variables.$offcanvas-border-color};
+  --#{variables.$prefix}offcanvas-box-shadow: #{variables.$offcanvas-box-shadow};
   --#{variables.$prefix}offcanvas-transition: #{transform
-    $offcanvas-transition-duration ease-in-out};
-  --#{variables.$prefix}offcanvas-title-line-height: #{$offcanvas-title-line-height};
+    variables.$offcanvas-transition-duration ease-in-out};
+  --#{variables.$prefix}offcanvas-title-line-height: #{variables.$offcanvas-title-line-height};
   // scss-docs-end offcanvas-css-vars
 }
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  $next: breakpoint-next($breakpoint, $grid-breakpoints);
-  $infix: breakpoint-infix($next, $grid-breakpoints);
+@each $breakpoint in map-keys(variables.$grid-breakpoints) {
+  $next: breakpoints.breakpoint-next($breakpoint, variables.$grid-breakpoints);
+  $infix: breakpoints.breakpoint-infix($next, variables.$grid-breakpoints);
 
   .offcanvas#{$infix} {
     @extend %offcanvas-css-vars;
   }
 }
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  $next: breakpoint-next($breakpoint, $grid-breakpoints);
-  $infix: breakpoint-infix($next, $grid-breakpoints);
+@each $breakpoint in map-keys(variables.$grid-breakpoints) {
+  $next: breakpoints.breakpoint-next($breakpoint, variables.$grid-breakpoints);
+  $infix: breakpoints.breakpoint-infix($next, variables.$grid-breakpoints);
 
   .offcanvas#{$infix} {
-    @include media-breakpoint-down($next) {
+    @include breakpoints.media-breakpoint-down($next) {
       position: fixed;
       bottom: 0;
       z-index: var(--#{variables.$prefix}offcanvas-zindex);
@@ -44,8 +50,12 @@
       background-color: var(--#{variables.$prefix}offcanvas-bg);
       background-clip: padding-box;
       outline: 0;
-      @include box-shadow(var(--#{variables.$prefix}offcanvas-box-shadow));
-      @include transition(var(--#{variables.$prefix}offcanvas-transition));
+      @include box-shadow.box-shadow(
+        var(--#{variables.$prefix}offcanvas-box-shadow)
+      );
+      @include transition.transition(
+        var(--#{variables.$prefix}offcanvas-transition)
+      );
 
       &.offcanvas-start {
         top: 0;
@@ -99,7 +109,7 @@
     }
 
     @if not($infix == "") {
-      @include media-breakpoint-up($next) {
+      @include breakpoints.media-breakpoint-up($next) {
         --#{variables.$prefix}offcanvas-height: auto;
         --#{variables.$prefix}offcanvas-border-width: 0;
         background-color: transparent !important; // stylelint-disable-line declaration-no-important
@@ -122,10 +132,10 @@
 }
 
 .offcanvas-backdrop {
-  @include overlay-backdrop(
-    $zindex-offcanvas-backdrop,
-    $offcanvas-backdrop-bg,
-    $offcanvas-backdrop-opacity
+  @include backdrop.overlay-backdrop(
+    variables.$zindex-offcanvas-backdrop,
+    variables.$offcanvas-backdrop-bg,
+    variables.$offcanvas-backdrop-opacity
   );
 }
 

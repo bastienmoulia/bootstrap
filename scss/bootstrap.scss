@@ -1,15 +1,14 @@
-@forward "mixins/banner";
-//@include bsBanner("");
-$variable-prefix: bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
-$prefix: $variable-prefix !default;
+@import "mixins/banner";
+@include bsBanner("");
+
 // scss-docs-start import-stack
 // Configuration
-@forward "functions";
-@forward "variables";
-@forward "variables-dark";
-@forward "maps";
-@forward "mixins";
-@forward "utilities";
+@import "functions";
+@import "variables";
+@import "variables-dark";
+@import "maps";
+@import "mixins";
+@import "utilities";
 
 // Layout & components
 @import "root";

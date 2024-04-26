@@ -1,28 +1,33 @@
+@use "variables";
+@use "mixins/border-radius";
+@use "mixins/box-shadow";
+@use "mixins/breakpoints";
+
 //
 // Base styles
 //
 
 .card {
   // scss-docs-start card-css-vars
-  --#{variables.$prefix}card-spacer-y: #{$card-spacer-y};
-  --#{variables.$prefix}card-spacer-x: #{$card-spacer-x};
-  --#{variables.$prefix}card-title-spacer-y: #{$card-title-spacer-y};
-  --#{variables.$prefix}card-title-color: #{$card-title-color};
-  --#{variables.$prefix}card-subtitle-color: #{$card-subtitle-color};
-  --#{variables.$prefix}card-border-width: #{$card-border-width};
-  --#{variables.$prefix}card-border-color: #{$card-border-color};
-  --#{variables.$prefix}card-border-radius: #{$card-border-radius};
-  --#{variables.$prefix}card-box-shadow: #{$card-box-shadow};
-  --#{variables.$prefix}card-inner-border-radius: #{$card-inner-border-radius};
-  --#{variables.$prefix}card-cap-padding-y: #{$card-cap-padding-y};
-  --#{variables.$prefix}card-cap-padding-x: #{$card-cap-padding-x};
-  --#{variables.$prefix}card-cap-bg: #{$card-cap-bg};
-  --#{variables.$prefix}card-cap-color: #{$card-cap-color};
-  --#{variables.$prefix}card-height: #{$card-height};
-  --#{variables.$prefix}card-color: #{$card-color};
-  --#{variables.$prefix}card-bg: #{$card-bg};
-  --#{variables.$prefix}card-img-overlay-padding: #{$card-img-overlay-padding};
-  --#{variables.$prefix}card-group-margin: #{$card-group-margin};
+  --#{variables.$prefix}card-spacer-y: #{variables.$card-spacer-y};
+  --#{variables.$prefix}card-spacer-x: #{variables.$card-spacer-x};
+  --#{variables.$prefix}card-title-spacer-y: #{variables.$card-title-spacer-y};
+  --#{variables.$prefix}card-title-color: #{variables.$card-title-color};
+  --#{variables.$prefix}card-subtitle-color: #{variables.$card-subtitle-color};
+  --#{variables.$prefix}card-border-width: #{variables.$card-border-width};
+  --#{variables.$prefix}card-border-color: #{variables.$card-border-color};
+  --#{variables.$prefix}card-border-radius: #{variables.$card-border-radius};
+  --#{variables.$prefix}card-box-shadow: #{variables.$card-box-shadow};
+  --#{variables.$prefix}card-inner-border-radius: #{variables.$card-inner-border-radius};
+  --#{variables.$prefix}card-cap-padding-y: #{variables.$card-cap-padding-y};
+  --#{variables.$prefix}card-cap-padding-x: #{variables.$card-cap-padding-x};
+  --#{variables.$prefix}card-cap-bg: #{variables.$card-cap-bg};
+  --#{variables.$prefix}card-cap-color: #{variables.$card-cap-color};
+  --#{variables.$prefix}card-height: #{variables.$card-height};
+  --#{variables.$prefix}card-color: #{variables.$card-color};
+  --#{variables.$prefix}card-bg: #{variables.$card-bg};
+  --#{variables.$prefix}card-img-overlay-padding: #{variables.$card-img-overlay-padding};
+  --#{variables.$prefix}card-group-margin: #{variables.$card-group-margin};
   // scss-docs-end card-css-vars
 
   position: relative;
@@ -36,8 +41,10 @@
   background-clip: border-box;
   border: var(--#{variables.$prefix}card-border-width) solid
     var(--#{variables.$prefix}card-border-color);
-  @include border-radius(var(--#{variables.$prefix}card-border-radius));
-  @include box-shadow(var(--#{variables.$prefix}card-box-shadow));
+  @include border-radius.border-radius(
+    var(--#{variables.$prefix}card-border-radius)
+  );
+  @include box-shadow.box-shadow(var(--#{variables.$prefix}card-box-shadow));
 
   > hr {
     margin-right: 0;
@@ -50,14 +57,14 @@
 
     &:first-child {
       border-top-width: 0;
-      @include border-top-radius(
+      @include border-radius.border-top-radius(
         var(--#{variables.$prefix}card-inner-border-radius)
       );
     }
 
     &:last-child {
       border-bottom-width: 0;
-      @include border-bottom-radius(
+      @include border-radius.border-bottom-radius(
         var(--#{variables.$prefix}card-inner-border-radius)
       );
     }
@@ -99,7 +106,11 @@
 
 .card-link {
   &:hover {
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    text-decoration: if(
+      variables.$link-hover-decoration == underline,
+      none,
+      null
+    );
   }
 
   + .card-link {
@@ -121,7 +132,7 @@
     var(--#{variables.$prefix}card-border-color);
 
   &:first-child {
-    @include border-radius(
+    @include border-radius.border-radius(
       var(--#{variables.$prefix}card-inner-border-radius)
         var(--#{variables.$prefix}card-inner-border-radius) 0 0
     );
@@ -137,7 +148,7 @@
     var(--#{variables.$prefix}card-border-color);
 
   &:last-child {
-    @include border-radius(
+    @include border-radius.border-radius(
       0 0 var(--#{variables.$prefix}card-inner-border-radius)
         var(--#{variables.$prefix}card-inner-border-radius)
     );
@@ -183,7 +194,9 @@
   bottom: 0;
   left: 0;
   padding: var(--#{variables.$prefix}card-img-overlay-padding);
-  @include border-radius(var(--#{variables.$prefix}card-inner-border-radius));
+  @include border-radius.border-radius(
+    var(--#{variables.$prefix}card-inner-border-radius)
+  );
 }
 
 .card-img,
@@ -194,14 +207,14 @@
 
 .card-img,
 .card-img-top {
-  @include border-top-radius(
+  @include border-radius.border-top-radius(
     var(--#{variables.$prefix}card-inner-border-radius)
   );
 }
 
 .card-img,
 .card-img-bottom {
-  @include border-bottom-radius(
+  @include border-radius.border-bottom-radius(
     var(--#{variables.$prefix}card-inner-border-radius)
   );
 }
@@ -217,7 +230,7 @@
     margin-bottom: var(--#{variables.$prefix}card-group-margin);
   }
 
-  @include media-breakpoint-up(sm) {
+  @include breakpoints.media-breakpoint-up(sm) {
     display: flex;
     flex-flow: row wrap;
     // The child selector allows nested `.card` within `.card-group`
@@ -233,9 +246,9 @@
       }
 
       // Handle rounded corners
-      @if $enable-rounded {
+      @if variables.$enable-rounded {
         &:not(:last-child) {
-          @include border-end-radius(0);
+          @include border-radius.border-end-radius(0);
 
           .card-img-top,
           .card-header {
@@ -250,7 +263,7 @@
         }
 
         &:not(:first-child) {
-          @include border-start-radius(0);
+          @include border-radius.border-start-radius(0);
 
           .card-img-top,
           .card-header {

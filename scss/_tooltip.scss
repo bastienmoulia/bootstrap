@@ -1,28 +1,42 @@
+@use "variables";
+@use "mixins/border-radius";
+@use "mixins/deprecate";
+@use "mixins/reset-text";
+@use "vendor/rfs";
+
 // Base class
 .tooltip {
   // scss-docs-start tooltip-css-vars
-  --#{variables.$prefix}tooltip-zindex: #{$zindex-tooltip};
-  --#{variables.$prefix}tooltip-max-width: #{$tooltip-max-width};
-  --#{variables.$prefix}tooltip-padding-x: #{$tooltip-padding-x};
-  --#{variables.$prefix}tooltip-padding-y: #{$tooltip-padding-y};
-  --#{variables.$prefix}tooltip-margin: #{$tooltip-margin};
-  @include rfs($tooltip-font-size, --#{variables.$prefix}tooltip-font-size);
-  --#{variables.$prefix}tooltip-color: #{$tooltip-color};
-  --#{variables.$prefix}tooltip-bg: #{$tooltip-bg};
-  --#{variables.$prefix}tooltip-border-radius: #{$tooltip-border-radius};
-  --#{variables.$prefix}tooltip-opacity: #{$tooltip-opacity};
-  --#{variables.$prefix}tooltip-arrow-width: #{$tooltip-arrow-width};
-  --#{variables.$prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
+  --#{variables.$prefix}tooltip-zindex: #{variables.$zindex-tooltip};
+  --#{variables.$prefix}tooltip-max-width: #{variables.$tooltip-max-width};
+  --#{variables.$prefix}tooltip-padding-x: #{variables.$tooltip-padding-x};
+  --#{variables.$prefix}tooltip-padding-y: #{variables.$tooltip-padding-y};
+  --#{variables.$prefix}tooltip-margin: #{variables.$tooltip-margin};
+  @include rfs.rfs(
+    variables.$tooltip-font-size,
+    --#{variables.$prefix}tooltip-font-size
+  );
+  --#{variables.$prefix}tooltip-color: #{variables.$tooltip-color};
+  --#{variables.$prefix}tooltip-bg: #{variables.$tooltip-bg};
+  --#{variables.$prefix}tooltip-border-radius: #{variables.$tooltip-border-radius};
+  --#{variables.$prefix}tooltip-opacity: #{variables.$tooltip-opacity};
+  --#{variables.$prefix}tooltip-arrow-width: #{variables.$tooltip-arrow-width};
+  --#{variables.$prefix}tooltip-arrow-height: #{variables.$tooltip-arrow-height};
   // scss-docs-end tooltip-css-vars
 
   z-index: var(--#{variables.$prefix}tooltip-zindex);
   display: block;
   margin: var(--#{variables.$prefix}tooltip-margin);
-  @include deprecate("`$tooltip-margin`", "v5", "v5.x", true);
+  @include deprecate.deprecate(
+    "`variables.$tooltip-margin`",
+    "v5",
+    "v5.x",
+    true
+  );
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
-  @include reset-text();
-  @include font-size(var(--#{variables.$prefix}tooltip-font-size));
+  @include reset-text.reset-text();
+  @include rfs.font-size(var(--#{variables.$prefix}tooltip-font-size));
   // Allow breaking very long words so they don't overflow the tooltip's bounds
   word-wrap: break-word;
   opacity: 0;
@@ -132,5 +146,7 @@
   color: var(--#{variables.$prefix}tooltip-color);
   text-align: center;
   background-color: var(--#{variables.$prefix}tooltip-bg);
-  @include border-radius(var(--#{variables.$prefix}tooltip-border-radius));
+  @include border-radius.border-radius(
+    var(--#{variables.$prefix}tooltip-border-radius)
+  );
 }

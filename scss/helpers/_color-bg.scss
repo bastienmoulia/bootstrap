@@ -12,11 +12,11 @@
         variables.$white,
         variables.$black
       )
-      if($enable-important-utilities, !important, null);
+      if(variables.$enable-important-utilities, !important, null);
     background-color: RGBA(
         var(--#{variables.$prefix}#{$color}-rgb),
         var(--#{variables.$prefix}bg-opacity, 1)
       )
-      if($enable-important-utilities, !important, null);
+      if(variables.$enable-important-utilities, !important, null);
   }
 }

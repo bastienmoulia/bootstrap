@@ -1,3 +1,5 @@
+@use "../variables";
+
 // Utility generator
 // Used to generate utilities & print utilities
 @mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
@@ -89,7 +91,7 @@
               }
             }
             #{$property}: $value
-              if($enable-important-utilities, !important, null);
+              if(variables.$enable-important-utilities, !important, null);
           }
         }
 
@@ -104,7 +106,7 @@
                 }
               }
               #{$property}: $value
-                if($enable-important-utilities, !important, null);
+                if(variables.$enable-important-utilities, !important, null);
             }
           }
         }
