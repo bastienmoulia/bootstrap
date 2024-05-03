@@ -1,5 +1,5 @@
 @use "../functions";
-@use "../variables";
+@use "../variables" as *;
 @use "../maps";
 @use "breakpoints";
 
@@ -7,20 +7,20 @@
 //
 // Generate semantic grid columns with these mixins.
 
-@mixin make-row($gutter: variables.$grid-gutter-width) {
-  --#{variables.$prefix}gutter-x: #{$gutter};
-  --#{variables.$prefix}gutter-y: 0;
+@mixin make-row($gutter: $grid-gutter-width) {
+  --#{$prefix}gutter-x: #{$gutter};
+  --#{$prefix}gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
   // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
   margin-top: calc(
-    -1 * var(--#{variables.$prefix}gutter-y)
+    -1 * var(--#{$prefix}gutter-y)
   ); // stylelint-disable-line function-disallowed-list
   margin-right: calc(
-    -0.5 * var(--#{variables.$prefix}gutter-x)
+    -0.5 * var(--#{$prefix}gutter-x)
   ); // stylelint-disable-line function-disallowed-list
   margin-left: calc(
-    -0.5 * var(--#{variables.$prefix}gutter-x)
+    -0.5 * var(--#{$prefix}gutter-x)
   ); // stylelint-disable-line function-disallowed-list
 }
 
@@ -38,12 +38,12 @@
   width: 100%;
   max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
   padding-right: calc(
-    var(--#{variables.$prefix}gutter-x) * 0.5
+    var(--#{$prefix}gutter-x) * 0.5
   ); // stylelint-disable-line function-disallowed-list
   padding-left: calc(
-    var(--#{variables.$prefix}gutter-x) * 0.5
+    var(--#{$prefix}gutter-x) * 0.5
   ); // stylelint-disable-line function-disallowed-list
-  margin-top: var(--#{variables.$prefix}gutter-y);
+  margin-top: var(--#{$prefix}gutter-y);
 }
 
 @mixin make-col($size: false, $columns: $grid-columns) {
@@ -84,9 +84,9 @@
 // any value of `$grid-columns`.
 
 @mixin make-grid-columns(
-  $columns: variables.$grid-columns,
-  $gutter: variables.$grid-gutter-width,
-  $breakpoints: variables.$grid-breakpoints
+  $columns: $grid-columns,
+  $gutter: $grid-gutter-width,
+  $breakpoints: $grid-breakpoints
 ) {
   @each $breakpoint in map-keys($breakpoints) {
     $infix: breakpoints.breakpoint-infix($breakpoint, $breakpoints);
@@ -101,8 +101,8 @@
         @include make-col-auto();
       }
 
-      @if variables.$grid-row-columns > 0 {
-        @for $i from 1 through variables.$grid-row-columns {
+      @if $grid-row-columns > 0 {
+        @for $i from 1 through $grid-row-columns {
           .row-cols#{$infix}-#{$i} {
             @include row-cols($i);
           }
@@ -137,12 +137,12 @@
       @each $key, $value in maps.$gutters {
         .g#{$infix}-#{$key},
         .gx#{$infix}-#{$key} {
-          --#{variables.$prefix}gutter-x: #{$value};
+          --#{$prefix}gutter-x: #{$value};
         }
 
         .g#{$infix}-#{$key},
         .gy#{$infix}-#{$key} {
-          --#{variables.$prefix}gutter-y: #{$value};
+          --#{$prefix}gutter-y: #{$value};
         }
       }
     }

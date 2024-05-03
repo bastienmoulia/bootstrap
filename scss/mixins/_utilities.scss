@@ -1,4 +1,4 @@
-@use "../variables";
+@use "../variables" as *;
 
 // Utility generator
 // Used to generate utilities & print utilities
@@ -72,14 +72,14 @@
 
       @if $is-css-var {
         .#{$property-class + $infix + $property-class-modifier} {
-          --#{variables.$prefix}#{$css-variable-name}: #{$value};
+          --#{$prefix}#{$css-variable-name}: #{$value};
         }
 
         @each $pseudo in $state {
           .#{$property-class
             + $infix
             + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
-            --#{variables.$prefix}#{$css-variable-name}: #{$value};
+            --#{$prefix}#{$css-variable-name}: #{$value};
           }
         }
       } @else {
@@ -87,11 +87,11 @@
           @each $property in $properties {
             @if $is-local-vars {
               @each $local-var, $variable in $is-local-vars {
-                --#{variables.$prefix}#{$local-var}: #{$variable};
+                --#{$prefix}#{$local-var}: #{$variable};
               }
             }
             #{$property}: $value
-              if(variables.$enable-important-utilities, !important, null);
+              if($enable-important-utilities, !important, null);
           }
         }
 
@@ -102,11 +102,11 @@
             @each $property in $properties {
               @if $is-local-vars {
                 @each $local-var, $variable in $is-local-vars {
-                  --#{variables.$prefix}#{$local-var}: #{$variable};
+                  --#{$prefix}#{$local-var}: #{$variable};
                 }
               }
               #{$property}: $value
-                if(variables.$enable-important-utilities, !important, null);
+                if($enable-important-utilities, !important, null);
             }
           }
         }

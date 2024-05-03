@@ -3,7 +3,7 @@
 // scss-docs-start import-stack
 // Configuration
 @use "functions";
-@use "variables";
+@use "variables" as *;
 @use "variables-dark";
 @use "maps";
 @use "mixins";

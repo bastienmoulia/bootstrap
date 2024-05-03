@@ -1,8 +1,8 @@
-@use "../variables";
+@use "../variables" as *;
 
 // scss-docs-start color-mode-mixin
 @mixin color-mode($mode: light, $root: false) {
-  @if variables.$color-mode-type == "media-query" {
+  @if $color-mode-type == "media-query" {
     @if $root == true {
       @media (prefers-color-scheme: $mode) {
         :root {

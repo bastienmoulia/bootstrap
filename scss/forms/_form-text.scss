@@ -1,4 +1,4 @@
-@use "../variables";
+@use "../variables" as *;
 @use "../vendor/rfs";
 
 //
@@ -6,9 +6,9 @@
 //
 
 .form-text {
-  margin-top: variables.$form-text-margin-top;
-  @include rfs.font-size(variables.$form-text-font-size);
-  font-style: variables.$form-text-font-style;
-  font-weight: variables.$form-text-font-weight;
-  color: variables.$form-text-color;
+  margin-top: $form-text-margin-top;
+  @include rfs.font-size($form-text-font-size);
+  font-style: $form-text-font-style;
+  font-weight: $form-text-font-weight;
+  color: $form-text-color;
 }

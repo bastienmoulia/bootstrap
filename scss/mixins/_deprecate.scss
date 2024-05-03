@@ -1,4 +1,4 @@
-@use "../variables";
+@use "../variables" as *;
 
 // Deprecate mixin
 //
@@ -11,9 +11,7 @@
   $remove-version,
   $ignore-warning: false
 ) {
-  @if (
-    variables.$enable-deprecation-messages != false and $ignore-warning != true
-  ) {
+  @if ($enable-deprecation-messages != false and $ignore-warning != true) {
     @warn "#{$name} has been deprecated as of #{$deprecate-version}. It will be removed entirely in #{$remove-version}.";
   }
 }
