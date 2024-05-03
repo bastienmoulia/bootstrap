@@ -1,5 +1,6 @@
-@import "mixins/banner";
-@include bsBanner(Utilities);
+@use "mixins/banner" with (
+  $bsFile: "Utilities"
+);
 
 // Configuration
 @import "functions";

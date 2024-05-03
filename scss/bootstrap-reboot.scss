@@ -1,5 +1,6 @@
-@import "mixins/banner";
-@include bsBanner(Reboot);
+@use "mixins/banner" with (
+  $bsFile: "Reboot"
+);
 
 @import "functions";
 @import "variables";
