@@ -354,9 +354,7 @@ a {
 }
 
 a:hover {
-  --bs-link-color-rgb: var(
-    --bs-link-hover-color-rgb
-  );
+  --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -601,4 +599,5 @@ progress {
 [hidden] {
   display: none !important;
 }
+
 /*# sourceMappingURL=bootstrap-reboot.rtl.css.map */
