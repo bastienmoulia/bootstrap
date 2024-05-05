@@ -1,8 +1,8 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/gradients" as *;
-@use "mixins/lists";
-@use "mixins/pagination";
+@use "mixins/lists" as *;
+@use "mixins/pagination" as *;
 @use "mixins/transition" as *;
 @use "vendor/rfs" as *;
 
@@ -31,7 +31,7 @@
   // scss-docs-end pagination-css-vars
 
   display: flex;
-  @include lists.list-unstyled();
+  @include list-unstyled();
 }
 
 .page-link {
@@ -110,7 +110,7 @@
 //
 
 .pagination-lg {
-  @include pagination.pagination-size(
+  @include pagination-size(
     $pagination-padding-y-lg,
     $pagination-padding-x-lg,
     $font-size-lg,
@@ -119,7 +119,7 @@
 }
 
 .pagination-sm {
-  @include pagination.pagination-size(
+  @include pagination-size(
     $pagination-padding-y-sm,
     $pagination-padding-x-sm,
     $font-size-sm,

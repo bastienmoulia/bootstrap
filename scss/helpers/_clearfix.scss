@@ -1,5 +1,5 @@
-@use "../mixins/clearfix";
+@use "../mixins/clearfix" as *;
 
 .clearfix {
-  @include clearfix.clearfix();
+  @include clearfix();
 }

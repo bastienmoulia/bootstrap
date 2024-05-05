@@ -1,7 +1,7 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/reset-text";
+@use "mixins/reset-text" as *;
 @use "vendor/rfs" as *;
 
 .popover {
@@ -33,7 +33,7 @@
   max-width: var(--#{$prefix}popover-max-width);
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
-  @include reset-text.reset-text();
+  @include reset-text();
   @include font-size(var(--#{$prefix}popover-font-size));
   // Allow breaking very long words so they don't overflow the popover's bounds
   word-wrap: break-word;

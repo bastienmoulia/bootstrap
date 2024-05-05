@@ -1,10 +1,10 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/breakpoints";
+@use "mixins/breakpoints" as *;
 @use "mixins/color-mode" as *;
-@use "mixins/deprecate";
-@use "mixins/escape-svg";
+@use "mixins/deprecate" as *;
+@use "mixins/escape-svg" as *;
 @use "mixins/gradients" as *;
 @use "mixins/transition" as *;
 @use "vendor/rfs" as *;
@@ -68,7 +68,7 @@
   }
 
   @each $breakpoint, $container-max-width in $container-max-widths {
-    > .container#{breakpoints.breakpoint-infix($breakpoint, $container-max-widths)} {
+    > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
       @extend %container-flex-properties;
     }
   }
@@ -206,12 +206,12 @@
 // where your navbar collapses.
 .navbar-expand {
   @each $breakpoint in map-keys($grid-breakpoints) {
-    $next: breakpoints.breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoints.breakpoint-infix($next, $grid-breakpoints);
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
 
     // stylelint-disable-next-line scss/selector-no-union-class-name
     &#{$infix} {
-      @include breakpoints.media-breakpoint-up($next) {
+      @include media-breakpoint-up($next) {
         flex-wrap: nowrap;
         justify-content: flex-start;
 
@@ -278,7 +278,7 @@
 // Styles for switching between navbars with light or dark background.
 
 .navbar-light {
-  @include deprecate.deprecate("`.navbar-light`", "v5.2.0", "v6.0.0", true);
+  @include deprecate("`.navbar-light`", "v5.2.0", "v6.0.0", true);
 }
 
 .navbar-dark,

@@ -1,5 +1,5 @@
 @use "../variables" as *;
-@use "../mixins/forms";
+@use "../mixins/forms" as *;
 
 // Form validation
 //
@@ -10,6 +10,6 @@
 
 // scss-docs-start form-validation-states-loop
 @each $state, $data in $form-validation-states {
-  @include forms.form-validation-state($state, $data...);
+  @include form-validation-state($state, $data...);
 }
 // scss-docs-end form-validation-states-loop

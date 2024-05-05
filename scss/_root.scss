@@ -1,6 +1,6 @@
 @use "variables" as *;
 @use "variables-dark" as *;
-@use "maps";
+@use "maps" as *;
 @use "mixins/color-mode" as *;
 @use "vendor/rfs" as *;
 
@@ -24,19 +24,19 @@
     --#{ $prefix}#{$color}: #{$value};
   }
 
-  @each $color, $value in maps.$theme-colors-rgb {
+  @each $color, $value in $theme-colors-rgb {
     --#{ $prefix}#{$color}-rgb: #{$value};
   }
 
-  @each $color, $value in maps.$theme-colors-text {
+  @each $color, $value in $theme-colors-text {
     --#{ $prefix}#{$color}-text-emphasis: #{$value};
   }
 
-  @each $color, $value in maps.$theme-colors-bg-subtle {
+  @each $color, $value in $theme-colors-bg-subtle {
     --#{ $prefix}#{$color}-bg-subtle: #{$value};
   }
 
-  @each $color, $value in maps.$theme-colors-border-subtle {
+  @each $color, $value in $theme-colors-border-subtle {
     --#{ $prefix}#{$color}-border-subtle: #{$value};
   }
 
@@ -160,15 +160,15 @@
     --#{ $prefix}tertiary-bg: #{$body-tertiary-bg-dark};
     --#{ $prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
-    @each $color, $value in maps.$theme-colors-text-dark {
+    @each $color, $value in $theme-colors-text-dark {
       --#{ $prefix}#{$color}-text-emphasis: #{$value};
     }
 
-    @each $color, $value in maps.$theme-colors-bg-subtle-dark {
+    @each $color, $value in $theme-colors-bg-subtle-dark {
       --#{ $prefix}#{$color}-bg-subtle: #{$value};
     }
 
-    @each $color, $value in maps.$theme-colors-border-subtle-dark {
+    @each $color, $value in $theme-colors-border-subtle-dark {
       --#{ $prefix}#{$color}-border-subtle: #{$value};
     }
 

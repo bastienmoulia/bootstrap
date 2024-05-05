@@ -1,7 +1,7 @@
 @use "variables" as *;
-@use "mixins/backdrop";
+@use "mixins/backdrop" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/breakpoints";
+@use "mixins/breakpoints" as *;
 @use "mixins/transition" as *;
 
 // stylelint-disable function-disallowed-list
@@ -25,8 +25,8 @@
 }
 
 @each $breakpoint in map-keys($grid-breakpoints) {
-  $next: breakpoints.breakpoint-next($breakpoint, $grid-breakpoints);
-  $infix: breakpoints.breakpoint-infix($next, $grid-breakpoints);
+  $next: breakpoint-next($breakpoint, $grid-breakpoints);
+  $infix: breakpoint-infix($next, $grid-breakpoints);
 
   .offcanvas#{$infix} {
     @extend %offcanvas-css-vars;
@@ -34,11 +34,11 @@
 }
 
 @each $breakpoint in map-keys($grid-breakpoints) {
-  $next: breakpoints.breakpoint-next($breakpoint, $grid-breakpoints);
-  $infix: breakpoints.breakpoint-infix($next, $grid-breakpoints);
+  $next: breakpoint-next($breakpoint, $grid-breakpoints);
+  $infix: breakpoint-infix($next, $grid-breakpoints);
 
   .offcanvas#{$infix} {
-    @include breakpoints.media-breakpoint-down($next) {
+    @include media-breakpoint-down($next) {
       position: fixed;
       bottom: 0;
       z-index: var(--#{$prefix}offcanvas-zindex);
@@ -105,7 +105,7 @@
     }
 
     @if not($infix == "") {
-      @include breakpoints.media-breakpoint-up($next) {
+      @include media-breakpoint-up($next) {
         --#{$prefix}offcanvas-height: auto;
         --#{$prefix}offcanvas-border-width: 0;
         background-color: transparent !important; // stylelint-disable-line declaration-no-important
@@ -128,7 +128,7 @@
 }
 
 .offcanvas-backdrop {
-  @include backdrop.overlay-backdrop(
+  @include overlay-backdrop(
     $zindex-offcanvas-backdrop,
     $offcanvas-backdrop-bg,
     $offcanvas-backdrop-opacity

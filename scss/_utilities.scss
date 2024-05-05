@@ -1,6 +1,6 @@
-@use "functions";
+@use "functions" as *;
 @use "variables" as *;
-@use "maps";
+@use "maps" as *;
 
 // Utilities
 
@@ -103,8 +103,8 @@ $utilities: map-merge(
         css-variable-name: focus-ring-color,
         class: focus-ring,
         values:
-          functions.map-loop(
-            maps.$theme-colors-rgb,
+          map-loop(
+            $theme-colors-rgb,
             rgba-css-var,
             "$key",
             "focus-ring",
@@ -196,12 +196,12 @@ $utilities: map-merge(
       local-vars: (
         "border-opacity": 1,
       ),
-      values: maps.$utilities-border-colors,
+      values: $utilities-border-colors,
     ),
     "subtle-border-color": (
       property: border-color,
       class: border,
-      values: maps.$utilities-border-subtle,
+      values: $utilities-border-subtle,
     ),
     "border-width": (
       property: border-width,
@@ -483,43 +483,43 @@ $utilities: map-merge(
         responsive: true,
         property: margin,
         class: m,
-        values: maps.$negative-spacers,
+        values: $negative-spacers,
       ),
     "negative-margin-x": (
       responsive: true,
       property: margin-right margin-left,
       class: mx,
-      values: maps.$negative-spacers,
+      values: $negative-spacers,
     ),
     "negative-margin-y": (
       responsive: true,
       property: margin-top margin-bottom,
       class: my,
-      values: maps.$negative-spacers,
+      values: $negative-spacers,
     ),
     "negative-margin-top": (
       responsive: true,
       property: margin-top,
       class: mt,
-      values: maps.$negative-spacers,
+      values: $negative-spacers,
     ),
     "negative-margin-end": (
       responsive: true,
       property: margin-right,
       class: me,
-      values: maps.$negative-spacers,
+      values: $negative-spacers,
     ),
     "negative-margin-bottom": (
       responsive: true,
       property: margin-bottom,
       class: mb,
-      values: maps.$negative-spacers,
+      values: $negative-spacers,
     ),
     "negative-margin-start": (
       responsive: true,
       property: margin-left,
       class: ms,
-      values: maps.$negative-spacers,
+      values: $negative-spacers,
     ),
     // Padding utilities
     "padding":
@@ -676,7 +676,7 @@ $utilities: map-merge(
         ),
         values:
           map-merge(
-            maps.$utilities-text-colors,
+            $utilities-text-colors,
             (
               "muted": var(--#{$prefix}secondary-color),
               // deprecated
@@ -704,7 +704,7 @@ $utilities: map-merge(
     "text-color": (
       property: color,
       class: text,
-      values: maps.$utilities-text-emphasis-colors,
+      values: $utilities-text-emphasis-colors,
     ),
     // scss-docs-end utils-color
     // scss-docs-start utils-links
@@ -739,7 +739,7 @@ $utilities: map-merge(
       ),
       values:
         map-merge(
-          maps.$utilities-links-underline,
+          $utilities-links-underline,
           (
             null:
               rgba(
@@ -773,7 +773,7 @@ $utilities: map-merge(
         ),
         values:
           map-merge(
-            maps.$utilities-bg-colors,
+            $utilities-bg-colors,
             (
               "transparent": transparent,
               "body-secondary":
@@ -803,7 +803,7 @@ $utilities: map-merge(
     "subtle-background-color": (
       property: background-color,
       class: bg,
-      values: maps.$utilities-bg-subtle,
+      values: $utilities-bg-subtle,
     ),
     // scss-docs-end utils-bg-color
     "gradient":

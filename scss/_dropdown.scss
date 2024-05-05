@@ -1,8 +1,8 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/breakpoints";
-@use "mixins/caret";
+@use "mixins/breakpoints" as *;
+@use "mixins/caret" as *;
 @use "mixins/gradients" as *;
 @use "vendor/rfs" as *;
 
@@ -20,7 +20,7 @@
   white-space: nowrap;
 
   // Generate the caret automatically
-  @include caret.caret();
+  @include caret();
 }
 
 // The dropdown menu
@@ -97,8 +97,8 @@
 // this custom property in JS to determine Popper's positioning
 
 @each $breakpoint in map-keys($grid-breakpoints) {
-  @include breakpoints.media-breakpoint-up($breakpoint) {
-    $infix: breakpoints.breakpoint-infix($breakpoint, $grid-breakpoints);
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
     .dropdown-menu#{$infix}-start {
       --bs-position: start;
@@ -132,7 +132,7 @@
   }
 
   .dropdown-toggle {
-    @include caret.caret(up);
+    @include caret(up);
   }
 }
 
@@ -146,7 +146,7 @@
   }
 
   .dropdown-toggle {
-    @include caret.caret(end);
+    @include caret(end);
     &::after {
       vertical-align: 0;
     }
@@ -163,7 +163,7 @@
   }
 
   .dropdown-toggle {
-    @include caret.caret(start);
+    @include caret(start);
     &::before {
       vertical-align: 0;
     }

@@ -1,7 +1,7 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/color-mode" as *;
-@use "mixins/escape-svg";
+@use "mixins/escape-svg" as *;
 
 // Transparent background and border properties included for button version.
 // iOS requires the button element instead of an anchor tag.

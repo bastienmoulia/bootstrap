@@ -1,7 +1,7 @@
 @use "variables" as *;
-@use "mixins/clearfix";
+@use "mixins/clearfix" as *;
 @use "mixins/color-mode" as *;
-@use "mixins/escape-svg";
+@use "mixins/escape-svg" as *;
 @use "mixins/transition" as *;
 
 // Notes on the classes:
@@ -29,7 +29,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  @include clearfix.clearfix();
+  @include clearfix();
 }
 
 .carousel-item {

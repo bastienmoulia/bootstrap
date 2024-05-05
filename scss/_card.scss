@@ -1,7 +1,7 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/breakpoints";
+@use "mixins/breakpoints" as *;
 
 //
 // Base styles
@@ -213,7 +213,7 @@
     margin-bottom: var(--#{$prefix}card-group-margin);
   }
 
-  @include breakpoints.media-breakpoint-up(sm) {
+  @include media-breakpoint-up(sm) {
     display: flex;
     flex-flow: row wrap;
     // The child selector allows nested `.card` within `.card-group`

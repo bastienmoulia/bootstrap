@@ -1,7 +1,7 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/deprecate";
-@use "mixins/reset-text";
+@use "mixins/deprecate" as *;
+@use "mixins/reset-text" as *;
 @use "vendor/rfs" as *;
 
 // Base class
@@ -24,10 +24,10 @@
   z-index: var(--#{$prefix}tooltip-zindex);
   display: block;
   margin: var(--#{$prefix}tooltip-margin);
-  @include deprecate.deprecate("`$tooltip-margin`", "v5", "v5.x", true);
+  @include deprecate("`$tooltip-margin`", "v5", "v5.x", true);
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
-  @include reset-text.reset-text();
+  @include reset-text();
   @include font-size(var(--#{$prefix}tooltip-font-size));
   // Allow breaking very long words so they don't overflow the tooltip's bounds
   word-wrap: break-word;

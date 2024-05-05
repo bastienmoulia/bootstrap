@@ -1,5 +1,5 @@
 @use "variables" as *;
-@use "mixins/grid";
+@use "mixins/grid" as *;
 
 // Row
 //
@@ -13,10 +13,10 @@
 
 @if $enable-grid-classes {
   .row {
-    @include grid.make-row();
+    @include make-row();
 
     > * {
-      @include grid.make-col-ready();
+      @include make-col-ready();
     }
   }
 }
@@ -40,5 +40,5 @@
 // Common styles for small and large grid columns
 
 @if $enable-grid-classes {
-  @include grid.make-grid-columns();
+  @include make-grid-columns();
 }

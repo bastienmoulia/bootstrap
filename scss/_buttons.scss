@@ -1,8 +1,8 @@
-@use "functions";
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/buttons";
+@use "mixins/buttons" as *;
 @use "mixins/gradients" as *;
 @use "mixins/transition" as *;
 @use "vendor/rfs" as *;
@@ -144,40 +144,32 @@
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
     @if $color == "light" {
-      @include buttons.button-variant(
+      @include button-variant(
         $value,
         $value,
-        $hover-background:
-          functions.shade-color($value, $btn-hover-bg-shade-amount),
-        $hover-border:
-          functions.shade-color($value, $btn-hover-border-shade-amount),
-        $active-background:
-          functions.shade-color($value, $btn-active-bg-shade-amount),
-        $active-border:
-          functions.shade-color($value, $btn-active-border-shade-amount)
+        $hover-background: shade-color($value, $btn-hover-bg-shade-amount),
+        $hover-border: shade-color($value, $btn-hover-border-shade-amount),
+        $active-background: shade-color($value, $btn-active-bg-shade-amount),
+        $active-border: shade-color($value, $btn-active-border-shade-amount)
       );
     } @else if $color == "dark" {
-      @include buttons.button-variant(
+      @include button-variant(
         $value,
         $value,
-        $hover-background:
-          functions.tint-color($value, $btn-hover-bg-tint-amount),
-        $hover-border:
-          functions.tint-color($value, $btn-hover-border-tint-amount),
-        $active-background:
-          functions.tint-color($value, $btn-active-bg-tint-amount),
-        $active-border:
-          functions.tint-color($value, $btn-active-border-tint-amount)
+        $hover-background: tint-color($value, $btn-hover-bg-tint-amount),
+        $hover-border: tint-color($value, $btn-hover-border-tint-amount),
+        $active-background: tint-color($value, $btn-active-bg-tint-amount),
+        $active-border: tint-color($value, $btn-active-border-tint-amount)
       );
     } @else {
-      @include buttons.button-variant($value, $value);
+      @include button-variant($value, $value);
     }
   }
 }
 
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
-    @include buttons.button-outline-variant($value);
+    @include button-outline-variant($value);
   }
 }
 // scss-docs-end btn-variant-loops
@@ -227,7 +219,7 @@
 //
 
 .btn-lg {
-  @include buttons.button-size(
+  @include button-size(
     $btn-padding-y-lg,
     $btn-padding-x-lg,
     $btn-font-size-lg,
@@ -236,7 +228,7 @@
 }
 
 .btn-sm {
-  @include buttons.button-size(
+  @include button-size(
     $btn-padding-y-sm,
     $btn-padding-x-sm,
     $btn-font-size-sm,

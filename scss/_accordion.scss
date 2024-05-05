@@ -2,7 +2,7 @@
 @use "variables-dark" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/color-mode" as *;
-@use "mixins/escape-svg";
+@use "mixins/escape-svg" as *;
 @use "mixins/transition" as *;
 @use "vendor/rfs" as *;
 

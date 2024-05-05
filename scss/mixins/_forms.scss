@@ -25,7 +25,7 @@
   $color,
   $icon,
   $tooltip-color:
-    functions.color-contrast(
+    color-contrast(
       $color,
       $color-contrast-dark,
       $color-contrast-light,

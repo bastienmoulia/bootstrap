@@ -1,6 +1,6 @@
 @use "variables" as *;
-@use "mixins/breakpoints";
-@use "mixins/container";
+@use "mixins/breakpoints" as *;
+@use "mixins/container" as *;
 
 // Container widths
 //
@@ -11,7 +11,7 @@
   .container,
   // 100% wide container at all breakpoints
   .container-fluid {
-    @include container.make-container();
+    @include make-container();
   }
 
   // Responsive containers that are 100% wide until a breakpoint
@@ -20,7 +20,7 @@
       @extend .container-fluid;
     }
 
-    @include breakpoints.media-breakpoint-up($breakpoint, $grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
       %responsive-container-#{$breakpoint} {
         max-width: $container-max-width;
       }
@@ -30,7 +30,7 @@
 
       @each $name, $width in $grid-breakpoints {
         @if ($extend-breakpoint) {
-          .container#{breakpoints.breakpoint-infix($name, $grid-breakpoints)} {
+          .container#{breakpoint-infix($name, $grid-breakpoints)} {
             @extend %responsive-container-#{$breakpoint};
           }
 

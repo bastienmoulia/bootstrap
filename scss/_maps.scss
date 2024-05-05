@@ -1,4 +1,4 @@
-@use "functions";
+@use "functions" as *;
 @use "variables" as *;
 @use "variables-dark" as *;
 
@@ -7,7 +7,7 @@
 // Placed here so that others can override the default Sass maps and see automatic updates to utilities and more.
 
 // scss-docs-start theme-colors-rgb
-$theme-colors-rgb: functions.map-loop($theme-colors, to-rgb, "$value") !default;
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value") !default;
 // scss-docs-end theme-colors-rgb
 
 // scss-docs-start theme-text-map
@@ -112,7 +112,7 @@ $utilities-text: map-merge(
     "body": to-rgb($body-color),
   )
 ) !default;
-$utilities-text-colors: functions.map-loop(
+$utilities-text-colors: map-loop(
   $utilities-text,
   rgba-css-var,
   "$key",
@@ -141,7 +141,7 @@ $utilities-bg: map-merge(
     "body": to-rgb($body-bg),
   )
 ) !default;
-$utilities-bg-colors: functions.map-loop(
+$utilities-bg-colors: map-loop(
   $utilities-bg,
   rgba-css-var,
   "$key",
@@ -169,7 +169,7 @@ $utilities-border: map-merge(
     "white": to-rgb($white),
   )
 ) !default;
-$utilities-border-colors: functions.map-loop(
+$utilities-border-colors: map-loop(
   $utilities-border,
   rgba-css-var,
   "$key",
@@ -189,7 +189,7 @@ $utilities-border-subtle: (
 ) !default;
 // scss-docs-end utilities-border-colors
 
-$utilities-links-underline: functions.map-loop(
+$utilities-links-underline: map-loop(
   $utilities-colors,
   rgba-css-var,
   "$key",
