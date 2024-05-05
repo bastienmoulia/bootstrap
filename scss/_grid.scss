@@ -31,7 +31,7 @@
     );
     gap: var(--#{$prefix}gap, #{$grid-gutter-width});
 
-    @include make-cssgrid();
+    @include grid.make-cssgrid();
   }
 }
 

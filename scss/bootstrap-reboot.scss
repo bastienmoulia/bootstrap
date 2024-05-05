@@ -2,10 +2,10 @@
   $bsFile: "Reboot"
 );
 
-@import "functions";
-@import "variables";
-@import "variables-dark";
-@import "maps";
-@import "mixins";
-@import "root";
-@import "reboot";
+@use "functions" as *;
+@use "variables" as *;
+@use "variables-dark" as *;
+@use "maps" as *;
+@use "mixins" as *;
+@use "root" as *;
+@use "reboot" as *;

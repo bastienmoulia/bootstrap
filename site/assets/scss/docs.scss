@@ -24,7 +24,7 @@
 
 // Load Bootstrap variables and mixins
 @import "../../../scss/functions";
-/*@import "../../../scss/variables";
+@import "../../../scss/variables";
 @import "../../../scss/mixins";
 
 // fusv-disable
@@ -56,4 +56,3 @@ $enable-cssgrid: true;
 // Load docs dependencies
 @import "syntax";
 @import "anchor";
-*/

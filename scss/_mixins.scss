@@ -40,4 +40,4 @@
 // Layout
 @forward "mixins/clearfix";
 @forward "mixins/container";
-@forward "mixins/grid";
+@use "mixins/grid" as *;
