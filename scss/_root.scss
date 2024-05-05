@@ -1,8 +1,8 @@
 @use "variables" as *;
-@use "variables-dark";
+@use "variables-dark" as *;
 @use "maps";
-@use "mixins/color-mode";
-@use "vendor/rfs";
+@use "mixins/color-mode" as *;
+@use "vendor/rfs" as *;
 
 :root,
 [data-bs-theme="light"] {
@@ -57,7 +57,7 @@
     --#{ $prefix}root-font-size: #{$font-size-root};
   }
   --#{ $prefix}body-font-family: #{inspect($font-family-base)};
-  @include rfs.rfs($font-size-base, --#{$prefix}body-font-size);
+  @include rfs($font-size-base, --#{$prefix}body-font-size);
   --#{ $prefix}body-font-weight: #{$font-weight-base};
   --#{ $prefix}body-line-height: #{$line-height-base};
   @if $body-text-align != null {
@@ -138,37 +138,27 @@
 }
 
 @if $enable-dark-mode {
-  @include color-mode.color-mode(dark, true) {
+  @include color-mode(dark, true) {
     color-scheme: dark;
 
     // scss-docs-start root-dark-mode-vars
-    --#{ $prefix}body-color: #{variables-dark.$body-color-dark};
-    --#{ $prefix}body-color-rgb: #{to-rgb(variables-dark.$body-color-dark)};
-    --#{ $prefix}body-bg: #{variables-dark.$body-bg-dark};
-    --#{ $prefix}body-bg-rgb: #{to-rgb(variables-dark.$body-bg-dark)};
+    --#{ $prefix}body-color: #{$body-color-dark};
+    --#{ $prefix}body-color-rgb: #{to-rgb($body-color-dark)};
+    --#{ $prefix}body-bg: #{$body-bg-dark};
+    --#{ $prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
 
-    --#{ $prefix}emphasis-color: #{variables-dark.$body-emphasis-color-dark};
-    --#{ $prefix}emphasis-color-rgb: #{to-rgb(
-        variables-dark.$body-emphasis-color-dark
-      )};
+    --#{ $prefix}emphasis-color: #{$body-emphasis-color-dark};
+    --#{ $prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
 
-    --#{ $prefix}secondary-color: #{variables-dark.$body-secondary-color-dark};
-    --#{ $prefix}secondary-color-rgb: #{to-rgb(
-        variables-dark.$body-secondary-color-dark
-      )};
-    --#{ $prefix}secondary-bg: #{variables-dark.$body-secondary-bg-dark};
-    --#{ $prefix}secondary-bg-rgb: #{to-rgb(
-        variables-dark.$body-secondary-bg-dark
-      )};
+    --#{ $prefix}secondary-color: #{$body-secondary-color-dark};
+    --#{ $prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
+    --#{ $prefix}secondary-bg: #{$body-secondary-bg-dark};
+    --#{ $prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-dark)};
 
-    --#{ $prefix}tertiary-color: #{variables-dark.$body-tertiary-color-dark};
-    --#{ $prefix}tertiary-color-rgb: #{to-rgb(
-        variables-dark.$body-tertiary-color-dark
-      )};
-    --#{ $prefix}tertiary-bg: #{variables-dark.$body-tertiary-bg-dark};
-    --#{ $prefix}tertiary-bg-rgb: #{to-rgb(
-        variables-dark.$body-tertiary-bg-dark
-      )};
+    --#{ $prefix}tertiary-color: #{$body-tertiary-color-dark};
+    --#{ $prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
+    --#{ $prefix}tertiary-bg: #{$body-tertiary-bg-dark};
+    --#{ $prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
     @each $color, $value in maps.$theme-colors-text-dark {
       --#{ $prefix}#{$color}-text-emphasis: #{$value};
@@ -182,26 +172,24 @@
       --#{ $prefix}#{$color}-border-subtle: #{$value};
     }
 
-    --#{ $prefix}heading-color: #{variables-dark.$headings-color-dark};
+    --#{ $prefix}heading-color: #{$headings-color-dark};
 
-    --#{ $prefix}link-color: #{variables-dark.$link-color-dark};
-    --#{ $prefix}link-hover-color: #{variables-dark.$link-hover-color-dark};
-    --#{ $prefix}link-color-rgb: #{to-rgb(variables-dark.$link-color-dark)};
-    --#{ $prefix}link-hover-color-rgb: #{to-rgb(
-        variables-dark.$link-hover-color-dark
-      )};
+    --#{ $prefix}link-color: #{$link-color-dark};
+    --#{ $prefix}link-hover-color: #{$link-hover-color-dark};
+    --#{ $prefix}link-color-rgb: #{to-rgb($link-color-dark)};
+    --#{ $prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
 
-    --#{ $prefix}code-color: #{variables-dark.$code-color-dark};
-    --#{ $prefix}highlight-color: #{variables-dark.$mark-color-dark};
-    --#{ $prefix}highlight-bg: #{variables-dark.$mark-bg-dark};
+    --#{ $prefix}code-color: #{$code-color-dark};
+    --#{ $prefix}highlight-color: #{$mark-color-dark};
+    --#{ $prefix}highlight-bg: #{$mark-bg-dark};
 
-    --#{ $prefix}border-color: #{variables-dark.$border-color-dark};
-    --#{ $prefix}border-color-translucent: #{variables-dark.$border-color-translucent-dark};
+    --#{ $prefix}border-color: #{$border-color-dark};
+    --#{ $prefix}border-color-translucent: #{$border-color-translucent-dark};
 
-    --#{ $prefix}form-valid-color: #{variables-dark.$form-valid-color-dark};
-    --#{ $prefix}form-valid-border-color: #{variables-dark.$form-valid-border-color-dark};
-    --#{ $prefix}form-invalid-color: #{variables-dark.$form-invalid-color-dark};
-    --#{ $prefix}form-invalid-border-color: #{variables-dark.$form-invalid-border-color-dark};
+    --#{ $prefix}form-valid-color: #{$form-valid-color-dark};
+    --#{ $prefix}form-valid-border-color: #{$form-valid-border-color-dark};
+    --#{ $prefix}form-invalid-color: #{$form-invalid-color-dark};
+    --#{ $prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
     // scss-docs-end root-dark-mode-vars
   }
 }

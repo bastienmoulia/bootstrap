@@ -1,14 +1,14 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/escape-svg";
-@use "vendor/rfs";
+@use "vendor/rfs" as *;
 
 .breadcrumb {
   // scss-docs-start breadcrumb-css-vars
   --#{$prefix}breadcrumb-padding-x: #{$breadcrumb-padding-x};
   --#{$prefix}breadcrumb-padding-y: #{$breadcrumb-padding-y};
   --#{$prefix}breadcrumb-margin-bottom: #{$breadcrumb-margin-bottom};
-  @include rfs.rfs($breadcrumb-font-size, --#{$prefix}breadcrumb-font-size);
+  @include rfs($breadcrumb-font-size, --#{$prefix}breadcrumb-font-size);
   --#{$prefix}breadcrumb-bg: #{$breadcrumb-bg};
   --#{$prefix}breadcrumb-border-radius: #{$breadcrumb-border-radius};
   --#{$prefix}breadcrumb-divider-color: #{$breadcrumb-divider-color};
@@ -21,7 +21,7 @@
   padding: var(--#{$prefix}breadcrumb-padding-y)
     var(--#{$prefix}breadcrumb-padding-x);
   margin-bottom: var(--#{$prefix}breadcrumb-margin-bottom);
-  @include rfs.font-size(var(--#{$prefix}breadcrumb-font-size));
+  @include font-size(var(--#{$prefix}breadcrumb-font-size));
   list-style: none;
   background-color: var(--#{$prefix}breadcrumb-bg);
   @include border-radius(var(--#{$prefix}breadcrumb-border-radius));
@@ -38,11 +38,11 @@
       color: var(--#{$prefix}breadcrumb-divider-color);
       content: var(
           --#{$prefix}breadcrumb-divider,
-          escape-svg.escape-svg($breadcrumb-divider)
+          escape-svg($breadcrumb-divider)
         )
         #{"/* rtl:"} var(
           --#{$prefix}breadcrumb-divider,
-          escape-svg.escape-svg($breadcrumb-divider-flipped)
+          escape-svg($breadcrumb-divider-flipped)
         ) #{"*/"};
     }
   }

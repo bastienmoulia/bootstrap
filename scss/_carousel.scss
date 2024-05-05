@@ -1,6 +1,6 @@
 @use "variables" as *;
 @use "mixins/clearfix";
-@use "mixins/color-mode";
+@use "mixins/color-mode" as *;
 @use "mixins/escape-svg";
 @use "mixins/transition" as *;
 
@@ -145,12 +145,12 @@
 }
 
 .carousel-control-prev-icon {
-  background-image: escape-svg.escape-svg($carousel-control-prev-icon-bg) #{"/*rtl:" +
-    escape-svg.escape-svg($carousel-control-next-icon-bg) + "*/"};
+  background-image: escape-svg($carousel-control-prev-icon-bg) #{"/*rtl:" +
+    escape-svg($carousel-control-next-icon-bg) + "*/"};
 }
 .carousel-control-next-icon {
-  background-image: escape-svg.escape-svg($carousel-control-next-icon-bg) #{"/*rtl:" +
-    escape-svg.escape-svg($carousel-control-prev-icon-bg) + "*/"};
+  background-image: escape-svg($carousel-control-next-icon-bg) #{"/*rtl:" +
+    escape-svg($carousel-control-prev-icon-bg) + "*/"};
 }
 
 // Optional indicator pips/controls
@@ -234,7 +234,7 @@
 }
 
 @if $enable-dark-mode {
-  @include color-mode.color-mode(dark) {
+  @include color-mode(dark) {
     @if $color-mode-type == "media-query" {
       .carousel {
         @include carousel-dark();

@@ -1,8 +1,8 @@
 @use "../variables" as *;
-@use "../variables-dark";
+@use "../variables-dark" as *;
 @use "../mixins/border-radius" as *;
-@use "../mixins/color-mode";
-@use "../mixins/escape-svg";
+@use "../mixins/color-mode" as *;
+@use "../mixins/escape-svg" as *;
 @use "../mixins/transition" as *;
 
 //
@@ -76,12 +76,12 @@
 
     &[type="checkbox"] {
       @if $enable-gradients {
-        --#{$prefix}form-check-bg-image: #{escape-svg.escape-svg(
+        --#{$prefix}form-check-bg-image: #{escape-svg(
               $form-check-input-checked-bg-image
             )},
           var(--#{$prefix}gradient);
       } @else {
-        --#{$prefix}form-check-bg-image: #{escape-svg.escape-svg(
+        --#{$prefix}form-check-bg-image: #{escape-svg(
             $form-check-input-checked-bg-image
           )};
       }
@@ -89,12 +89,12 @@
 
     &[type="radio"] {
       @if $enable-gradients {
-        --#{$prefix}form-check-bg-image: #{escape-svg.escape-svg(
+        --#{$prefix}form-check-bg-image: #{escape-svg(
               $form-check-radio-checked-bg-image
             )},
           var(--#{$prefix}gradient);
       } @else {
-        --#{$prefix}form-check-bg-image: #{escape-svg.escape-svg(
+        --#{$prefix}form-check-bg-image: #{escape-svg(
             $form-check-radio-checked-bg-image
           )};
       }
@@ -106,12 +106,12 @@
     border-color: $form-check-input-indeterminate-border-color;
 
     @if $enable-gradients {
-      --#{$prefix}form-check-bg-image: #{escape-svg.escape-svg(
+      --#{$prefix}form-check-bg-image: #{escape-svg(
             $form-check-input-indeterminate-bg-image
           )},
         var(--#{$prefix}gradient);
     } @else {
-      --#{$prefix}form-check-bg-image: #{escape-svg.escape-svg(
+      --#{$prefix}form-check-bg-image: #{escape-svg(
           $form-check-input-indeterminate-bg-image
         )};
     }
@@ -147,7 +147,7 @@
   padding-left: $form-switch-padding-start;
 
   .form-check-input {
-    --#{$prefix}form-switch-bg: #{escape-svg.escape-svg($form-switch-bg-image)};
+    --#{$prefix}form-switch-bg: #{escape-svg($form-switch-bg-image)};
 
     width: $form-switch-width;
     margin-left: $form-switch-padding-start * -1;
@@ -157,21 +157,17 @@
     @include transition($form-switch-transition);
 
     &:focus {
-      --#{$prefix}form-switch-bg: #{escape-svg.escape-svg(
-          $form-switch-focus-bg-image
-        )};
+      --#{$prefix}form-switch-bg: #{escape-svg($form-switch-focus-bg-image)};
     }
 
     &:checked {
       background-position: $form-switch-checked-bg-position;
 
       @if $enable-gradients {
-        --#{$prefix}form-switch-bg: #{escape-svg.escape-svg(
-              $form-switch-checked-bg-image
-            )},
+        --#{$prefix}form-switch-bg: #{escape-svg($form-switch-checked-bg-image)},
           var(--#{$prefix}gradient);
       } @else {
-        --#{$prefix}form-switch-bg: #{escape-svg.escape-svg(
+        --#{$prefix}form-switch-bg: #{escape-svg(
             $form-switch-checked-bg-image
           )};
       }
@@ -210,11 +206,9 @@
 }
 
 @if $enable-dark-mode {
-  @include color-mode.color-mode(dark) {
+  @include color-mode(dark) {
     .form-switch .form-check-input:not(:checked):not(:focus) {
-      --#{$prefix}form-switch-bg: #{escape-svg.escape-svg(
-          variables-dark.$form-switch-bg-image-dark
-        )};
+      --#{$prefix}form-switch-bg: #{escape-svg($form-switch-bg-image-dark)};
     }
   }
 }

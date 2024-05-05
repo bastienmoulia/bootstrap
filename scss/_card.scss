@@ -1,6 +1,6 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/box-shadow";
+@use "mixins/box-shadow" as *;
 @use "mixins/breakpoints";
 
 //
@@ -42,7 +42,7 @@
   border: var(--#{$prefix}card-border-width) solid
     var(--#{$prefix}card-border-color);
   @include border-radius(var(--#{$prefix}card-border-radius));
-  @include box-shadow.box-shadow(var(--#{$prefix}card-box-shadow));
+  @include box-shadow(var(--#{$prefix}card-box-shadow));
 
   > hr {
     margin-right: 0;

@@ -1,6 +1,6 @@
 @use "variables" as *;
 @use "mixins/backdrop";
-@use "mixins/box-shadow";
+@use "mixins/box-shadow" as *;
 @use "mixins/breakpoints";
 @use "mixins/transition" as *;
 
@@ -50,7 +50,7 @@
       background-color: var(--#{$prefix}offcanvas-bg);
       background-clip: padding-box;
       outline: 0;
-      @include box-shadow.box-shadow(var(--#{$prefix}offcanvas-box-shadow));
+      @include box-shadow(var(--#{$prefix}offcanvas-box-shadow));
       @include transition(var(--#{$prefix}offcanvas-transition));
 
       &.offcanvas-start {

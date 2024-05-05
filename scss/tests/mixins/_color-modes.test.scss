@@ -16,7 +16,7 @@
             background-color: var(--bs-primary-bg-subtle);
           }
         }
-        @include color-mode.color-mode(dark, true) {
+        @include color-mode(dark, true) {
           --custom-color: #{mix($indigo, $blue, 50%)};
         }
       }

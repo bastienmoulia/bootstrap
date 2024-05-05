@@ -356,7 +356,7 @@ $light-border-subtle: $gray-200 !default;
 $dark-border-subtle: $gray-500 !default;
 // scss-docs-end theme-border-subtle-variables
 
-// Characters which are escaped by the escape-svg.escape-svg function
+// Characters which are escaped by the escape-svg function
 $escaped-characters: (
   ("<", "%3c"),
   (">", "%3e"),

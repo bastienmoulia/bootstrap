@@ -1,10 +1,10 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/box-shadow";
+@use "mixins/box-shadow" as *;
 @use "mixins/breakpoints";
 @use "mixins/caret";
-@use "mixins/gradients";
-@use "vendor/rfs";
+@use "mixins/gradients" as *;
+@use "vendor/rfs" as *;
 
 // The dropdown wrapper (`<div>`)
 .dropup,
@@ -31,7 +31,7 @@
   --#{$prefix}dropdown-padding-x: #{$dropdown-padding-x};
   --#{$prefix}dropdown-padding-y: #{$dropdown-padding-y};
   --#{$prefix}dropdown-spacer: #{$dropdown-spacer};
-  @include rfs.rfs($dropdown-font-size, --#{$prefix}dropdown-font-size);
+  @include rfs($dropdown-font-size, --#{$prefix}dropdown-font-size);
   --#{$prefix}dropdown-color: #{$dropdown-color};
   --#{$prefix}dropdown-bg: #{$dropdown-bg};
   --#{$prefix}dropdown-border-color: #{$dropdown-border-color};
@@ -61,7 +61,7 @@
   padding: var(--#{$prefix}dropdown-padding-y)
     var(--#{$prefix}dropdown-padding-x);
   margin: 0; // Override default margin of ul
-  @include rfs.font-size(var(--#{$prefix}dropdown-font-size));
+  @include font-size(var(--#{$prefix}dropdown-font-size));
   color: var(--#{$prefix}dropdown-color);
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
@@ -70,7 +70,7 @@
   border: var(--#{$prefix}dropdown-border-width) solid
     var(--#{$prefix}dropdown-border-color);
   @include border-radius(var(--#{$prefix}dropdown-border-radius));
-  @include box-shadow.box-shadow(var(--#{$prefix}dropdown-box-shadow));
+  @include box-shadow(var(--#{$prefix}dropdown-box-shadow));
 
   &[data-bs-popper] {
     top: 100%;
@@ -201,14 +201,14 @@
   &:focus {
     color: var(--#{$prefix}dropdown-link-hover-color);
     text-decoration: if($link-hover-decoration == underline, none, null);
-    @include gradients.gradient-bg(var(--#{$prefix}dropdown-link-hover-bg));
+    @include gradient-bg(var(--#{$prefix}dropdown-link-hover-bg));
   }
 
   &.active,
   &:active {
     color: var(--#{$prefix}dropdown-link-active-color);
     text-decoration: none;
-    @include gradients.gradient-bg(var(--#{$prefix}dropdown-link-active-bg));
+    @include gradient-bg(var(--#{$prefix}dropdown-link-active-bg));
   }
 
   &.disabled,
@@ -231,7 +231,7 @@
   padding: var(--#{$prefix}dropdown-header-padding-y)
     var(--#{$prefix}dropdown-header-padding-x);
   margin-bottom: 0; // for use with heading elements
-  @include rfs.font-size($font-size-sm);
+  @include font-size($font-size-sm);
   color: var(--#{$prefix}dropdown-header-color);
   white-space: nowrap; // as with > li > a
 }

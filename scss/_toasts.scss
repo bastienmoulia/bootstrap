@@ -1,6 +1,6 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
-@use "vendor/rfs";
+@use "vendor/rfs" as *;
 
 .toast {
   // scss-docs-start toast-css-vars
@@ -9,7 +9,7 @@
   --#{$prefix}toast-padding-y: #{$toast-padding-y};
   --#{$prefix}toast-spacing: #{$toast-spacing};
   --#{$prefix}toast-max-width: #{$toast-max-width};
-  @include rfs.rfs($toast-font-size, --#{$prefix}toast-font-size);
+  @include rfs($toast-font-size, --#{$prefix}toast-font-size);
   --#{$prefix}toast-color: #{$toast-color};
   --#{$prefix}toast-bg: #{$toast-background-color};
   --#{$prefix}toast-border-width: #{$toast-border-width};
@@ -23,7 +23,7 @@
 
   width: var(--#{$prefix}toast-max-width);
   max-width: 100%;
-  @include rfs.font-size(var(--#{$prefix}toast-font-size));
+  @include font-size(var(--#{$prefix}toast-font-size));
   color: var(--#{$prefix}toast-color);
   pointer-events: auto;
   background-color: var(--#{$prefix}toast-bg);

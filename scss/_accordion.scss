@@ -1,10 +1,10 @@
 @use "variables" as *;
-@use "variables-dark";
+@use "variables-dark" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/color-mode";
+@use "mixins/color-mode" as *;
 @use "mixins/escape-svg";
 @use "mixins/transition" as *;
-@use "vendor/rfs";
+@use "vendor/rfs" as *;
 
 //
 // Base styles
@@ -23,13 +23,11 @@
   --#{$prefix}accordion-btn-padding-y: #{$accordion-button-padding-y};
   --#{$prefix}accordion-btn-color: #{$accordion-button-color};
   --#{$prefix}accordion-btn-bg: #{$accordion-button-bg};
-  --#{$prefix}accordion-btn-icon: #{escape-svg.escape-svg(
-      $accordion-button-icon
-    )};
+  --#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon)};
   --#{$prefix}accordion-btn-icon-width: #{$accordion-icon-width};
   --#{$prefix}accordion-btn-icon-transform: #{$accordion-icon-transform};
   --#{$prefix}accordion-btn-icon-transition: #{$accordion-icon-transition};
-  --#{$prefix}accordion-btn-active-icon: #{escape-svg.escape-svg(
+  --#{$prefix}accordion-btn-active-icon: #{escape-svg(
       $accordion-button-active-icon
     )};
   --#{$prefix}accordion-btn-focus-box-shadow: #{$accordion-button-focus-box-shadow};
@@ -47,7 +45,7 @@
   width: 100%;
   padding: var(--#{$prefix}accordion-btn-padding-y)
     var(--#{$prefix}accordion-btn-padding-x);
-  @include rfs.font-size($font-size-base);
+  @include font-size($font-size-base);
   color: var(--#{$prefix}accordion-btn-color);
   text-align: left; // Reset button style
   background-color: var(--#{$prefix}accordion-btn-bg);
@@ -167,13 +165,11 @@
 }
 
 @if $enable-dark-mode {
-  @include color-mode.color-mode(dark) {
+  @include color-mode(dark) {
     .accordion-button::after {
-      --#{$prefix}accordion-btn-icon: #{escape-svg.escape-svg(
-          variables-dark.$accordion-button-icon-dark
-        )};
-      --#{$prefix}accordion-btn-active-icon: #{escape-svg.escape-svg(
-          variables-dark.$accordion-button-active-icon-dark
+      --#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon-dark)};
+      --#{$prefix}accordion-btn-active-icon: #{escape-svg(
+          $accordion-button-active-icon-dark
         )};
     }
   }

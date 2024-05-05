@@ -1,8 +1,8 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/box-shadow";
+@use "mixins/box-shadow" as *;
 @use "mixins/image";
-@use "vendor/rfs";
+@use "vendor/rfs" as *;
 
 // Responsive images (ensure images don't scale beyond their parents)
 //
@@ -21,7 +21,7 @@
   background-color: $thumbnail-bg;
   border: $thumbnail-border-width solid $thumbnail-border-color;
   @include border-radius($thumbnail-border-radius);
-  @include box-shadow.box-shadow($thumbnail-box-shadow);
+  @include box-shadow($thumbnail-box-shadow);
 
   // Keep them at most 100% wide
   @include image.img-fluid();
@@ -42,6 +42,6 @@
 }
 
 .figure-caption {
-  @include rfs.font-size($figure-caption-font-size);
+  @include font-size($figure-caption-font-size);
   color: $figure-caption-color;
 }

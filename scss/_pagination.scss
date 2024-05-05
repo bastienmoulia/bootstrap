@@ -1,16 +1,16 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/gradients";
+@use "mixins/gradients" as *;
 @use "mixins/lists";
 @use "mixins/pagination";
 @use "mixins/transition" as *;
-@use "vendor/rfs";
+@use "vendor/rfs" as *;
 
 .pagination {
   // scss-docs-start pagination-css-vars
   --#{$prefix}pagination-padding-x: #{$pagination-padding-x};
   --#{$prefix}pagination-padding-y: #{$pagination-padding-y};
-  @include rfs.rfs($pagination-font-size, --#{$prefix}pagination-font-size);
+  @include rfs($pagination-font-size, --#{$prefix}pagination-font-size);
   --#{$prefix}pagination-color: #{$pagination-color};
   --#{$prefix}pagination-bg: #{$pagination-bg};
   --#{$prefix}pagination-border-width: #{$pagination-border-width};
@@ -39,7 +39,7 @@
   display: block;
   padding: var(--#{$prefix}pagination-padding-y)
     var(--#{$prefix}pagination-padding-x);
-  @include rfs.font-size(var(--#{$prefix}pagination-font-size));
+  @include font-size(var(--#{$prefix}pagination-font-size));
   color: var(--#{$prefix}pagination-color);
   text-decoration: if($link-decoration == none, null, none);
   background-color: var(--#{$prefix}pagination-bg);
@@ -67,7 +67,7 @@
   .active > & {
     z-index: 3;
     color: var(--#{$prefix}pagination-active-color);
-    @include gradients.gradient-bg(var(--#{$prefix}pagination-active-bg));
+    @include gradient-bg(var(--#{$prefix}pagination-active-bg));
     border-color: var(--#{$prefix}pagination-active-border-color);
   }
 
